@@ -1,0 +1,117 @@
+﻿@model List<KALEORG.Models.UrunYorumMusteri_Result>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<section role="main" class="content-body">
+
+    <header class="page-header">
+        <h2>Yorum Listesi</h2>
+        <div class="right-wrapper text-right">
+            <ol class="breadcrumbs">
+                <li>
+                    <a href="/Home/Index">
+                        <i class="fas fa-home"></i>
+                    </a>
+                </li>
+                <li><span>Yorum Listesi</span></li>
+
+            </ol>
+        </div>
+    </header>
+
+    <!-- start: page -->
+
+    <div class="row" style="padding:50px 0 0 0">
+        <div class="col">
+            <section class="card">
+                <header class="card-header">
+                    <div class="pull-right">
+                        
+                        @if (ViewBag.Ekran == "Pasif")
+                        {
+                        <a href="/Admin/YorumAdmin/Index" class="btn btn-primary">Aktif  Yorum Listesi</a>
+                        }
+                        else
+                        {
+                        <a href="/Admin/YorumAdmin/PassiveList" class="btn btn-primary"> Pasif Yorum Listesi</a>
+                        }
+
+
+
+                    </div>
+                    <h2 class="card-title">Yorum Listesi</h2>
+                </header>
+                <div class="card-body">
+                    <table class="table table-bordered table-striped mb-0" id="datatable-tabletools">
+                        <thead>
+                            <tr>
+                                <th>AD SOYAD</th>
+                                <th>MAIL</th>
+                                <th>URUN ADI</th>
+                                <th>YORUM</th>
+                                <th>YILDIZ</th>
+                                <th>İŞLEM</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @if (Model != null)
+                            {
+                                foreach (var i in Model)
+                                {
+
+                            <tr>
+                                <td>@i.YORUM_AD_SOYAD</td>
+                                <td>@i.YORUM_MAIL</td>
+                                <td>@i.URUN_ADI</td>
+                                <td>@i.YORUM</td>
+                                <td>@i.YILDIZ</td>
+                                <td class="btn-group">
+                                    @if (ViewBag.Ekran != "Pasif")
+                                    {
+                                        <a href="/Admin/YorumAdmin/Passive/@i.URUN_YORUM_ID" class="btn btn-danger btn-sm"><i class="fa fa-trash fa-fw"></i>Pasifleştir</a>
+                                    }
+                                    @if (ViewBag.Ekran == "Pasif")
+                                    {
+                                        <a href="/Admin/YorumAdmin/Active/@i.URUN_YORUM_ID" class="btn btn-success btn-sm"><i class="fa fa-rocket fa-fw"></i>Aktifleştir</a>
+                                    }
+
+                                </td>
+                            </tr>
+
+                                }
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <!-- end: page -->
+
+</section>
+@section scripts
+{
+
+    <!-- Specific Page Vendor -->
+    <script src="/Content/vendor/select2/js/select2.js"></script>
+    <script src="/Content/vendor/datatables/media/js/jquery.dataTables.min.js"></script>
+    <script src="/Content/vendor/datatables/media/js/dataTables.bootstrap4.min.js"></script>
+    <script src="/Content/vendor/datatables/extras/TableTools/Buttons-1.4.2/js/dataTables.buttons.min.js"></script>
+    <script src="/Content/vendor/datatables/extras/TableTools/Buttons-1.4.2/js/buttons.bootstrap4.min.js"></script>
+    <script src="/Content/vendor/datatables/extras/TableTools/Buttons-1.4.2/js/buttons.html5.min.js"></script>
+    <script src="/Content/vendor/datatables/extras/TableTools/Buttons-1.4.2/js/buttons.print.min.js"></script>
+    <script src="/Content/vendor/datatables/extras/TableTools/JSZip-2.5.0/jszip.min.js"></script>
+    <script src="/Content/vendor/datatables/extras/TableTools/pdfmake-0.1.32/pdfmake.min.js"></script>
+    <script src="/Content/vendor/datatables/extras/TableTools/pdfmake-0.1.32/vfs_fonts.js"></script>
+
+
+    <!-- Examples -->
+    <script src="/Scripts/js/examples/examples.datatables.default.js"></script>
+    <script src="/Scripts/js/examples/examples.datatables.row.with.details.js"></script>
+    <script src="/Scripts/js/examples/examples.datatables.tabletools.js"></script>
+
+}
+

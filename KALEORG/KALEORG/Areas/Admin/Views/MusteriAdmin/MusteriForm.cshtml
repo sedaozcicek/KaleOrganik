@@ -1,0 +1,87 @@
+﻿@model  KALEORG.Models.T_MUSTERI
+@{
+    ViewBag.Title = "MusteriForm";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+
+<section role="main" class="content-body card-margin">
+    <header class="page-header">
+        <h2>Müşteri Ekle / Güncelle</h2>
+
+        <div class="right-wrapper text-right">
+            <ol class="breadcrumbs">
+                <li>
+                    <a href="/Home/Index">
+                        <i class="fas fa-home"></i>
+                    </a>
+                </li>
+                <li><span><a href="/Admin/MusteriAdmin/Index/">Müşteri Listesi</a> </span></li>
+                <li><span>Müşteri Ekle / Güncelle</span></li>
+            </ol>
+
+            <a class="sidebar-right-toggle" data-open="sidebar-right"><i class="fas fa-chevron-left"></i></a>
+        </div>
+    </header>
+
+    <!-- start: page -->
+    @using (Html.BeginForm("Save", "MusteriAdmin", FormMethod.Post))
+    {
+
+        <div class="row" style="padding:50px 0 0 0">
+            <div class="col-lg-12">
+                <section class="card">
+                    <header class="card-header">
+                        <div class="card-actions">
+                        </div>
+                        <h2 class="card-title">Musteri Form</h2>
+
+                        <p class="card-subtitle">
+                            Lütfen (*) içeren alanları boş bırakmayınız.!
+                        </p>
+                    </header>
+                    <div class="card-body">
+                        <div class="row form-group">
+                            <div class="col-lg-5">
+                                <div class="form-group">
+                                    <label class="col-form-label">MÜŞTERİ ADI (*)</label>
+                                    @Html.TextBoxFor(m => m.MUSTERI_ADI, new { ViewBag.Musteri , @class = "form-control", @type = "text", @required = "required" })
+                                    @Html.ValidationMessageFor(m => m.MUSTERI_ADI)
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-form-label">MUSTERI SOYADI (*)</label>
+                                    @Html.TextBoxFor(m => m.MUSTERI_SOYADI, new { @class = "form-control", @type = "text", @MaxLength = "250", @required = "required" })
+                                    @Html.ValidationMessageFor(m => m.MUSTERI_SOYADI)
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-form-label">MUSTERI MAIL (*)</label>
+                                    @Html.TextBoxFor(m => m.MUSTERI_MAIL, new { @class = "form-control", @type = "text", @MaxLength = "250", @required = "required" })
+                                    @Html.ValidationMessageFor(m => m.MUSTERI_MAIL)
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-form-label">MUSTERI TELEFON (*)</label>
+                                    @Html.TextBoxFor(m => m.MUSTERI_TELEFON, new { @class = "form-control", @type = "text", @MaxLength = "250", @required = "required" })
+                                    @Html.ValidationMessageFor(m => m.MUSTERI_TELEFON)
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <footer class="card-footer text-right">
+                        @Html.HiddenFor(m => m.MUSTERI_ID)
+                        <button class="btn btn-success">KAYDET</button>
+                    </footer>
+                </section>
+            </div>
+        </div>
+
+    }
+</section>
+
+@section scripts
+{
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+    <script src="~/Scripts/MaxMinLength.js"></script>
+
+}

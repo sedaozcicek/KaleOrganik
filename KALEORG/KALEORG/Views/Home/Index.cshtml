@@ -1,0 +1,345 @@
+﻿@model List<KALEORG.Models.UrunYorumMusteri_Result>
+    @{
+        ViewBag.Title = "Index";
+        Layout = "~/Views/Shared/_Layout.cshtml";
+    }
+
+    <!-- Banner Start -->
+
+    <div class="andro_banner banner-2">
+        <div class="andro_banner-slider">
+
+            <div class="andro_banner-slider-inner" style="background-image: url('/img/banner/1.jpg');">
+                <div class="container">
+                    <div class="andro_banner-slider-text">
+                        <img src="/img/products/8.png" class="img-1" alt="product">
+                        <p>Sadece Tanıtım Amaçlıdır Satışlarımız <strong class="custom-primary"> <a href="https://www.instagram.com/kale_organik/?igshid=1hzbqpu4lidmg" link="black" alink="green" vlink="red">INSTAGRAM</a></strong> Hesabındandır.</p>
+                        <h1 style="background-image: url('/img/cta/3.jpg') ">ORGANİK <br>ÜRÜNLER</h1>
+                        <p>Mevsimlere yönelik sebzeleri & meyvveleri kendiniz ve ailenizin sağlığı için organik tüketin</p>
+                    </div>
+                </div>
+            </div>
+            <div class="andro_banner-slider-inner" style="background-image: url('/img/banner/2.jpg');">
+                <div class="container">
+                    <div class="andro_banner-slider-text">
+                        <img src="/img/products/14.png" class="img-1" alt="product">
+                        <p>Sadece Tanıtım Amaçlıdır Satışlarımız <strong class="custom-primary"> <a href="https://www.instagram.com/kale_organik/?igshid=1hzbqpu4lidmg" link="black" alink="green" vlink="red">INSTAGRAM</a></strong> Hesabındandır.</p>
+                        <h1 style="background-image: url('/img/cta/2.jpg') "> Organik  <br>ÜRÜNLER</br> </h1>
+                        <p>Mevsimlere yönelik sebzeleri & meyvveleri kendiniz ve ailenizin sağlığı için organik tüketin</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Banner End -->
+    <!-- Categories Start -->
+    <div class="section section-padding category_section">
+        <div class="container">
+            <div class="row">
+                @foreach (var i in ViewBag.kategoriList)
+                {
+                    <div class="col-lg-2 col-md-3 col-sm-4">
+                        <div class="andro_icon-block text-center has-link">
+                            <a href="/Urun/Index/@i.KATEGORI_ID">
+                                <i class="flaticon-diet"></i>
+                                @i.KATEGORI_ADI
+                            </a>
+                        </div>
+                    </div>
+                }
+
+            </div>
+        </div>
+    </div>
+    <!-- Categories End -->
+    <!-- Icons Start -->
+    <div class="section section-padding pt-0">
+        <div class="container">
+            <div class="row">
+
+                <div class="col-lg-4">
+                    <div class="andro_icon-block icon-block-2">
+                        <i class="flaticon-diet"></i>
+                        <h5>SERTİFİKALARIMIZ</h5>
+                        <p>Sertifikalarımız ...</p>
+                    </div>
+                </div>
+
+                <div class="col-lg-4">
+                    <div class="andro_icon-block icon-block-2">
+                        <i class="flaticon-harvest"></i>
+                         <a href="/Hakkimizda/Index"><h5>BİZ KİMİZ?</h5></a>
+                        <p>KALEORGANİK Ailesi olarak biz çok iyiyiz :D</p>
+                    </div>
+                </div>
+
+                <div class="col-lg-4">
+                    <div class="andro_icon-block icon-block-2">
+                        <i class="flaticon-tag"></i>
+                        <h5>ÇALIŞTIĞIMIZ FİRMALAR</h5>
+                        <p>Kimler kimlerle çalıştık bir bilsem :P</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <!-- Icons End -->
+    <!-- Products Start -->
+    <div class="section pt-0 andro_fresh-arrivals">
+        <div class="container">
+
+
+            <div class="section-title flex-title">
+                <h4 class="title">POPÜLER ÜRÜNLERİMİZ</h4>
+                <div class="andro_arrows">
+                    <i class="fa fa-arrow-left slick-arrow slider-prev"></i>
+                    <i class="fa fa-arrow-right slick-arrow slider-next"></i>
+                </div>
+            </div>
+
+            <div class="andro_fresh-arrivals-slider">
+                @*BAK BURASI ÇOK ÖNEMLİ*@
+
+                @if (ViewBag.randomUrunList != null)
+                {
+                    foreach (var i in ViewBag.randomUrunList)
+                    {
+                <div class="andro_product andro_product-has-controls">                   
+                    <div class="andro_product-thumb thumb-sm">                        
+                        <a href="/UrunDetay/Index/@i.URUN_ID"><img style="width: 150px;height : 150px;" src="~/img/urun/@i.FOTO" alt="product"></a>
+                    </div>
+
+                    <div class="andro_product-body">
+                        <h5 class="andro_product-title"> <a href="/UrunDetay/Index/@i.URUN_ID"> @i.URUN_ADI </a> </h5>
+
+                        <div class="andro_product-price">
+                            <span>@i.URUN_FIYAT</span>
+                            <span>@(Convert.ToDouble(i.URUN_FIYAT) * 1.10)₺</span>
+
+                        </div>
+                        <div class="andro_rating">
+                            @if (Model != null)
+                            {
+                                for (int m = 0; m < Model[0].ORTYILDIZ; m++)
+                                {
+                                    <i class="fa fa-star active"></i>
+                                }
+
+                                for (int m = 0; m < 5 - Model[0].ORTYILDIZ; m++)
+                                {
+                                    <i class="fa fa-star"></i>
+                                }
+                                <span>@Model[0].ORTYILDIZ Yıldız</span>
+                            }
+                        </div>
+                    </div>
+                    <div class="andro_product-footer">
+                        <a class="andro_btn-custom btn-block" href="/UrunDetay/Index/@i.URUN_ID"> Ürün İncele </a>
+                    </div>
+                </div>
+
+                    }
+                }
+            </div>
+        </div>
+    </div>
+    <!-- Products End -->
+
+
+    <!-- Testimonials & Clients start -->
+    <div class="section pt-0">
+        <div class="container">
+            <div class="row">
+
+                <div class="col-lg-8 mb-lg-30">
+                    <div class="andro_testimonials">
+                        <div class="andro_testimonial-item">
+                            <div class="andro_testimonials-inner">
+                                <img src="/img/people/4.jpg" alt="author">
+                                <h5>METİN YILMAZ</h5>
+                                <span>Üretici</span>
+                                <p>
+                                    2004'ten beri insanların daha sağlıklı ürünler yemesi için kaliteli tohumlarla tarım yapıyoruz..
+                                </p>
+                            </div>
+                            <ul class="andro_sm">
+                                <li> <a href="https://www.instagram.com/kale_organik/?igshid=1hzbqpu4lidmg" class="instagram"> <i class="fab fa-instagram"></i> </a> </li>
+                                <li> <a href="https://tr.linkedin.com/in/kale-organik-5581171a9"> <i class="fab fa-linkedin-in"></i> </a> </li>
+                            </ul>
+                        </div>
+                        <div class="andro_testimonial-item">
+                            <div class="andro_testimonials-inner">
+                                <img src="/img/people/4.jpg" alt="author">
+                                <h5>Nebahat YILMAZ</h5>
+                                <span>Üretici</span>
+                                <p>
+                                    Azot bakımından kaliteli topraklardan üretim yapıyoruz...
+                                </p>
+                            </div>
+                            <ul class="andro_sm">
+                                <li> <a href="https://www.instagram.com/kale_organik/?igshid=1hzbqpu4lidmg" class="instagram"> <i class="fab fa-instagram"></i> </a> </li>
+                                <li> <a href="https://tr.linkedin.com/in/kale-organik-5581171a9"> <i class="fab fa-linkedin-in"></i> </a> </li>
+                            </ul>
+                        </div>
+                        <div class="andro_testimonial-item">
+                            <div class="andro_testimonials-inner">
+                                <img src="/img/people/4.jpg" alt="author">
+                                <h5>Satı YILMAZ</h5>
+                                <span>Sosyal Medya Danışmanı</span>
+                                <p>
+                                    Ailemden süregelen tarım işlerini herkese duyurmak adına sosyal mecralarda duyulmasını sağlıyorum ve aileme bu serüvende yardımcı oluyorum..
+                                </p>
+                            </div>
+                            <ul class="andro_sm">
+                                <li> <a href="https://www.instagram.com/kale_organik/?igshid=1hzbqpu4lidmg" class="instagram"> <i class="fab fa-instagram"></i> </a> </li>
+                                <li> <a href="https://tr.linkedin.com/in/kale-organik-5581171a9"> <i class="fab fa-linkedin-in"></i> </a> </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4">
+                    <div class="andro_companies">
+                        <div class="andro_companies-item">
+                            <img src="/img/yerli üretim.jpg"  style="width: 90px;height : 90px;" alt="client">
+                            <div class="andro_companies-item-name">
+                                <span>Yerli Üretim</span>
+                            </div>
+                        </div>
+                        <div class="andro_companies-item">
+                            <img src="/img/organik.jpg" style="width:90px;height : 90px;"  alt="client">
+                            <div class="andro_companies-item-name">
+                                <span>Organik Tarım </span>
+                            </div>
+                        </div>
+                        <div class="andro_companies-item">
+                            <img src="/img/analiz.jpg" style="width: 90px;height : 90px;"  alt="client">
+                            <div class="andro_companies-item-name">
+                                <span>Analizi Alınmış Ürünler</span>
+                            </div>
+                        </div>
+                        <div class="andro_companies-item">
+                            <img src="~/img/kalelogo.png" style="width: 90px;height : 90px;"  alt="client">
+                            <div class="andro_companies-item-name">
+                                <span>KALE ORGANİK</span>
+                            </div>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+    <!-- Testimonials & Clients end -->
+    <!-- FAQ & Contact Form Start -->
+    <div class="section pt-0">
+        <div class="container">
+            <div class="row">
+
+                <div class="col-lg-5 mb-lg-30">
+
+                    <div class="section-title">
+                        <h4 class="title">EN SIK SORULAN SORULAR</h4>
+                    </div>
+
+                    <div class="accordion with-gap" id="generalFAQExample">
+                        <div class="card">
+                            <div class="card-header" data-toggle="collapse" role="button" data-target="#generalOne" aria-expanded="true" aria-controls="generalOne">
+                                Neden organik ürün tercih etmelisiniz?
+                            </div>
+
+                            <div id="generalOne" class="collapse show" data-parent="#generalFAQExample">
+                                <div class="card-body">
+                                    En doğal yöntemlerle elde edilen organik ürünler, diğer ürünlere göre daha lezzetli ve besin değerleri yüksek ürünlerdir.
+                                    Organik besinlerle beslenen kişiler hastalıklara karşı doğal bir korunma yolu geliştirilmiş olurlar. Özellikle kanser ve 
+                                    diğer birçok hastalıktan kendilerini koruyarak sağlıklı yaşarlar.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card-header" data-toggle="collapse" role="button" data-target="#generalTwo" aria-expanded="false" aria-controls="generalTwo">
+                                KALE ORGANİK'İ NEDEN TERCİH ETMELİYİM?
+                            </div>
+
+                            <div id="generalTwo" class="collapse" data-parent="#generalFAQExample">
+                                <div class="card-body">
+                                    2004'ten beri organik tarımla uğraşmaktayız. Tüm ürünler hiçbir katkı maddesi olmadan yetiştirilmektedir. Sipariş verilen ürünlerde 
+                                    titizlikle hazırlayıp size en taze ve kaliteli ürünleri ulaştırmayı amaçlamaktayız. Eğer ki, ürünler elinize ulaştığında kargo şirketi
+                                    tarafından yaşanılan bir problem var ise bu sorunu biz üstlenmekteyiz.                                    
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card-header" data-toggle="collapse" role="button" data-target="#generalThree" aria-expanded="false" aria-controls="generalThree">
+                                ORGANİK OLMAYAN ÜRÜNLERİN VÜCUDA ZARARI NEDİR?
+                            </div>
+
+                            <div id="generalThree" class="collapse" data-parent="#generalFAQExample">
+                                <div class="card-body">
+                                    Organik olmayan ürünler, taşıdıkları kimyasallar ve koruyucular nedeniyle, besinden kaynaklanan E. coli virüsü ve bakterilerin vücudunuza 
+                                    aşılanmasına neden olur ve daha fazla besin kaynaklı bakteri, virüs vb. oluşumuna sebep olurlar.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card-header" data-toggle="collapse" role="button" data-target="#generalFour" aria-expanded="false" aria-controls="generalFour">
+                                ORGANİK ÜRÜNLER TÜKETMEMİZ İÇİN 8 ÖNEMLİ NEDEN!
+                            </div>
+
+                            <div id="generalFour" class="collapse" data-parent="#generalFAQExample">
+                                <div class="card-body">
+                                    <ul>
+                                        <li>Besin değerleri daha yüksektir.</li>
+                                        <li>Zararlı tarım ilacı barındırmazlar.</li>
+                                        <li>Özellikle çocuklar için iyidir. </li>
+                                        <li>Daha doğa dostudurlar. </li>
+                                        <li>Büyük ölçüde yerlidirler.</li>
+                                        <li>Daha tazedirler.</li>
+                                        <li>Daha güvenlidirler.</li>
+                                        <li>Daha lezzetlidirler.</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="col-lg-7">
+
+                    <div class="section-title">
+                        <h4 class="title">Bizimle İletişime Geçin</h4>
+                    </div>
+                    @using (Html.BeginForm("Save", "Iletisim", FormMethod.Post))
+                    {
+                        <form method="post">
+                            <div class="row">
+                                <div class="form-group col-lg-6">
+                                    <input type="text" placeholder="Adınız" class="form-control" name="fname" id="fname" value="">
+                                </div>
+                                <div class="form-group col-lg-6">
+                                    <input type="text" placeholder="Soyadınız" class="form-control" name="lname" id=" lname" value="">
+                                </div>
+                                <div class="form-group col-lg-12">
+                                    <input type="email" placeholder="ornek_mail@gmail.com" class="form-control" name="email" id="email" value="">
+                                </div>
+                                <div class="form-group col-lg-12">
+                                    <input type="text" placeholder="Konu" class="form-control" name="konu" id="konu" value="">
+                                </div>
+                                <div class="form-group col-lg-12">
+                                    <textarea name="mesaj" id="mesaj" class="form-control" placeholder="Dilek ve Şikayetlerinizi belirttiğiniz için teşekkür ederiz.." rows="8"></textarea>
+                                </div>
+                            </div>
+                            <script>function myFunction() { alert("İletişime geçtiğiniz için teşekkürler! "); }</script>
+                            <button type="submit" onclick="myFunction()" class="andro_btn-custom primary" name="button">GÖNDER</button>
+                        </form>
+                    }
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <!-- FAQ & Contact Form End -->

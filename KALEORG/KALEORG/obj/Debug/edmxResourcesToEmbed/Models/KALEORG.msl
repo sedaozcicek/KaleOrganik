@@ -1,0 +1,318 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="KALEORGANICModelStoreContainer" CdmEntityContainer="KALEORGANICEntities">
+    <EntitySetMapping Name="KULLANICI_KATEGORI">
+      <EntityTypeMapping TypeName="KALEORGANICModel.KULLANICI_KATEGORI">
+        <MappingFragment StoreEntitySet="KULLANICI_KATEGORI">
+          <ScalarProperty Name="KULLANICI_KATEGORI_ID" ColumnName="KULLANICI_KATEGORI_ID" />
+          <ScalarProperty Name="KULLANICI_ID" ColumnName="KULLANICI_ID" />
+          <ScalarProperty Name="KATEGORI" ColumnName="KATEGORI" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="T_ADRES">
+      <EntityTypeMapping TypeName="KALEORGANICModel.T_ADRES">
+        <MappingFragment StoreEntitySet="T_ADRES">
+          <ScalarProperty Name="ADRES_ID" ColumnName="ADRES_ID" />
+          <ScalarProperty Name="MUSTERI_ID" ColumnName="MUSTERI_ID" />
+          <ScalarProperty Name="ULKE" ColumnName="ULKE" />
+          <ScalarProperty Name="IL" ColumnName="IL" />
+          <ScalarProperty Name="ILCE" ColumnName="ILCE" />
+          <ScalarProperty Name="POSTAKODU" ColumnName="POSTAKODU" />
+          <ScalarProperty Name="ADRES" ColumnName="ADRES" />
+          <ScalarProperty Name="KAPALI" ColumnName="KAPALI" />
+          <ScalarProperty Name="GUNCELLEME_TARIHI" ColumnName="GUNCELLEME_TARIHI" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="T_HAKKIMIZDA">
+      <EntityTypeMapping TypeName="KALEORGANICModel.T_HAKKIMIZDA">
+        <MappingFragment StoreEntitySet="T_HAKKIMIZDA">
+          <ScalarProperty Name="HAKKIMIZDA_ID" ColumnName="HAKKIMIZDA_ID" />
+          <ScalarProperty Name="HAKKIMIZDA_ICERIK" ColumnName="HAKKIMIZDA_ICERIK" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="T_ILETISIM">
+      <EntityTypeMapping TypeName="KALEORGANICModel.T_ILETISIM">
+        <MappingFragment StoreEntitySet="T_ILETISIM">
+          <ScalarProperty Name="ILETISIM_ID" ColumnName="ILETISIM_ID" />
+          <ScalarProperty Name="ADRES" ColumnName="ADRES" />
+          <ScalarProperty Name="TELEFON1" ColumnName="TELEFON1" />
+          <ScalarProperty Name="TELEFON2" ColumnName="TELEFON2" />
+          <ScalarProperty Name="FAKS" ColumnName="FAKS" />
+          <ScalarProperty Name="MAIL_MUHASEBE" ColumnName="MAIL_MUHASEBE" />
+          <ScalarProperty Name="MAIL_SATIS" ColumnName="MAIL_SATIS" />
+          <ScalarProperty Name="MAIL_INFO" ColumnName="MAIL_INFO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="T_KARGO">
+      <EntityTypeMapping TypeName="KALEORGANICModel.T_KARGO">
+        <MappingFragment StoreEntitySet="T_KARGO">
+          <ScalarProperty Name="KARGO_FIRMA_ID" ColumnName="KARGO_FIRMA_ID" />
+          <ScalarProperty Name="FIRMA_ADI" ColumnName="FIRMA_ADI" />
+          <ScalarProperty Name="SOZLESME_NO" ColumnName="SOZLESME_NO" />
+          <ScalarProperty Name="SUBE" ColumnName="SUBE" />
+          <ScalarProperty Name="SUBE_NO" ColumnName="SUBE_NO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="T_KATEGORI">
+      <EntityTypeMapping TypeName="KALEORGANICModel.T_KATEGORI">
+        <MappingFragment StoreEntitySet="T_KATEGORI">
+          <ScalarProperty Name="KATEGORI_ID" ColumnName="KATEGORI_ID" />
+          <ScalarProperty Name="KATEGORI_ADI" ColumnName="KATEGORI_ADI" />
+          <ScalarProperty Name="KAPALI" ColumnName="KAPALI" />
+          <ScalarProperty Name="GUNCELLEME_TARIHI" ColumnName="GUNCELLEME_TARIHI" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="T_KULLANICI">
+      <EntityTypeMapping TypeName="KALEORGANICModel.T_KULLANICI">
+        <MappingFragment StoreEntitySet="T_KULLANICI">
+          <ScalarProperty Name="Kullanici_ID" ColumnName="Kullanici_ID" />
+          <ScalarProperty Name="Kullanici_Adi" ColumnName="Kullanici_Adi" />
+          <ScalarProperty Name="Sifre" ColumnName="Sifre" />
+          <ScalarProperty Name="KAPALI" ColumnName="KAPALI" />
+          <ScalarProperty Name="GUNCELLEME_TARIHI" ColumnName="GUNCELLEME_TARIHI" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="T_MUSTERI">
+      <EntityTypeMapping TypeName="KALEORGANICModel.T_MUSTERI">
+        <MappingFragment StoreEntitySet="T_MUSTERI">
+          <ScalarProperty Name="MUSTERI_ID" ColumnName="MUSTERI_ID" />
+          <ScalarProperty Name="MUSTERI_ADI" ColumnName="MUSTERI_ADI" />
+          <ScalarProperty Name="MUSTERI_SOYADI" ColumnName="MUSTERI_SOYADI" />
+          <ScalarProperty Name="MUSTERI_MAIL" ColumnName="MUSTERI_MAIL" />
+          <ScalarProperty Name="MUSTERI_TELEFON" ColumnName="MUSTERI_TELEFON" />
+          <ScalarProperty Name="KAPALI" ColumnName="KAPALI" />
+          <ScalarProperty Name="GUNCELLEME_TARIHI" ColumnName="GUNCELLEME_TARIHI" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="T_URUN">
+      <EntityTypeMapping TypeName="KALEORGANICModel.T_URUN">
+        <MappingFragment StoreEntitySet="T_URUN">
+          <ScalarProperty Name="URUN_ID" ColumnName="URUN_ID" />
+          <ScalarProperty Name="KATEGORI_ID" ColumnName="KATEGORI_ID" />
+          <ScalarProperty Name="URUN_ADI" ColumnName="URUN_ADI" />
+          <ScalarProperty Name="URUN_FIYAT" ColumnName="URUN_FIYAT" />
+          <ScalarProperty Name="FOTO" ColumnName="FOTO" />
+          <ScalarProperty Name="ACIKLAMA" ColumnName="ACIKLAMA" />
+          <ScalarProperty Name="KAPALI" ColumnName="KAPALI" />
+          <ScalarProperty Name="GUNCELLEME_TARIHI" ColumnName="GUNCELLEME_TARIHI" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="T_URUN_YORUM">
+      <EntityTypeMapping TypeName="KALEORGANICModel.T_URUN_YORUM">
+        <MappingFragment StoreEntitySet="T_URUN_YORUM">
+          <ScalarProperty Name="URUN_YORUM_ID" ColumnName="URUN_YORUM_ID" />
+          <ScalarProperty Name="URUN_ID" ColumnName="URUN_ID" />
+          <ScalarProperty Name="KAPALI" ColumnName="KAPALI" />
+          <ScalarProperty Name="GUNCELLEME_TARIHI" ColumnName="GUNCELLEME_TARIHI" />
+          <ScalarProperty Name="YORUM" ColumnName="YORUM" />
+          <ScalarProperty Name="YILDIZ" ColumnName="YILDIZ" />
+          <ScalarProperty Name="YORUM_AD_SOYAD" ColumnName="YORUM_AD_SOYAD" />
+          <ScalarProperty Name="YORUM_MAIL" ColumnName="YORUM_MAIL" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="MusteriAdresList" FunctionName="KALEORGANICModel.Store.MusteriAdresList">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="KALEORGANICModel.MusteriAdresList_Result">
+          <ScalarProperty Name="MUSTERI_ID" ColumnName="MUSTERI_ID" />
+          <ScalarProperty Name="MUSTERI_ADI" ColumnName="MUSTERI_ADI" />
+          <ScalarProperty Name="MUSTERI_SOYADI" ColumnName="MUSTERI_SOYADI" />
+          <ScalarProperty Name="MUSTERI_TELEFON" ColumnName="MUSTERI_TELEFON" />
+          <ScalarProperty Name="MUSTERI_MAIL" ColumnName="MUSTERI_MAIL" />
+          <ScalarProperty Name="ADRES_ID" ColumnName="ADRES_ID" />
+          <ScalarProperty Name="ULKE" ColumnName="ULKE" />
+          <ScalarProperty Name="IL" ColumnName="IL" />
+          <ScalarProperty Name="ILCE" ColumnName="ILCE" />
+          <ScalarProperty Name="POSTAKODU" ColumnName="POSTAKODU" />
+          <ScalarProperty Name="ADRES" ColumnName="ADRES" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="UrunKategoriList" FunctionName="KALEORGANICModel.Store.UrunKategoriList">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="KALEORGANICModel.UrunKategoriList_Result">
+          <ScalarProperty Name="URUN_ID" ColumnName="URUN_ID" />
+          <ScalarProperty Name="URUN_ADI" ColumnName="URUN_ADI" />
+          <ScalarProperty Name="URUN_FIYAT" ColumnName="URUN_FIYAT" />
+          <ScalarProperty Name="FOTO" ColumnName="FOTO" />
+          <ScalarProperty Name="ACIKLAMA" ColumnName="ACIKLAMA" />
+          <ScalarProperty Name="KAPALI" ColumnName="KAPALI" />
+          <ScalarProperty Name="GUNCELLEME_TARIHI" ColumnName="GUNCELLEME_TARIHI" />
+          <ScalarProperty Name="KATEGORI_ADI" ColumnName="KATEGORI_ADI" />
+          <ScalarProperty Name="KATEGORI_ID" ColumnName="KATEGORI_ID" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="UrunSatisUrunMusteri" FunctionName="KALEORGANICModel.Store.UrunSatisUrunMusteri">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="KALEORGANICModel.UrunSatisUrunMusteri_Result">
+          <ScalarProperty Name="URUN_SATIS_ID" ColumnName="URUN_SATIS_ID" />
+          <ScalarProperty Name="URUN_ID" ColumnName="URUN_ID" />
+          <ScalarProperty Name="SATIS_TARIHI" ColumnName="SATIS_TARIHI" />
+          <ScalarProperty Name="SATIS_FIYAT" ColumnName="SATIS_FIYAT" />
+          <ScalarProperty Name="MUSTERI_ID" ColumnName="MUSTERI_ID" />
+          <ScalarProperty Name="MIKTAR" ColumnName="MIKTAR" />
+          <ScalarProperty Name="KARGO_NO" ColumnName="KARGO_NO" />
+          <ScalarProperty Name="KARGO_FIRMA_ID" ColumnName="KARGO_FIRMA_ID" />
+          <ScalarProperty Name="KAPALI" ColumnName="KAPALI" />
+          <ScalarProperty Name="GUNCELLEME_TARIHI" ColumnName="GUNCELLEME_TARIHI" />
+          <ScalarProperty Name="URUN_FIYAT" ColumnName="URUN_FIYAT" />
+          <ScalarProperty Name="URUN_ADI" ColumnName="URUN_ADI" />
+          <ScalarProperty Name="KATEGORI_ID" ColumnName="KATEGORI_ID" />
+          <ScalarProperty Name="UKAPALI" ColumnName="UKAPALI" />
+          <ScalarProperty Name="UGUNCELLEME_TARIHI" ColumnName="UGUNCELLEME_TARIHI" />
+          <ScalarProperty Name="ACIKLAMA" ColumnName="ACIKLAMA" />
+          <ScalarProperty Name="FOTO" ColumnName="FOTO" />
+          <ScalarProperty Name="MUSTERI_TELEFON" ColumnName="MUSTERI_TELEFON" />
+          <ScalarProperty Name="MUSTERI_SOYADI" ColumnName="MUSTERI_SOYADI" />
+          <ScalarProperty Name="MUSTERI_MAIL" ColumnName="MUSTERI_MAIL" />
+          <ScalarProperty Name="MUSTERI_ADI" ColumnName="MUSTERI_ADI" />
+          <ScalarProperty Name="MKAPALI" ColumnName="MKAPALI" />
+          <ScalarProperty Name="MGUNCELLEME_TARIHI" ColumnName="MGUNCELLEME_TARIHI" />
+          <ScalarProperty Name="FIRMA_ADI" ColumnName="FIRMA_ADI" />
+          <ScalarProperty Name="SOZLESME_NO" ColumnName="SOZLESME_NO" />
+          <ScalarProperty Name="SUBE" ColumnName="SUBE" />
+          <ScalarProperty Name="SUBE_NO" ColumnName="SUBE_NO" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <EntitySetMapping Name="T_SERTIFIKA">
+      <EntityTypeMapping TypeName="KALEORGANICModel.T_SERTIFIKA">
+        <MappingFragment StoreEntitySet="T_SERTIFIKA">
+          <ScalarProperty Name="GUNCELLEME_TARIHI" ColumnName="GUNCELLEME_TARIHI" />
+          <ScalarProperty Name="KAPALI" ColumnName="KAPALI" />
+          <ScalarProperty Name="SERTIFIKA_ADI" ColumnName="SERTIFIKA_ADI" />
+          <ScalarProperty Name="SERTIFIKA_ID" ColumnName="SERTIFIKA_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="T_URUN_FOTO">
+      <EntityTypeMapping TypeName="KALEORGANICModel.T_URUN_FOTO">
+        <MappingFragment StoreEntitySet="T_URUN_FOTO">
+          <ScalarProperty Name="FOTO" ColumnName="FOTO" />
+          <ScalarProperty Name="URUN_ID" ColumnName="URUN_ID" />
+          <ScalarProperty Name="URUN_FOTO_ID" ColumnName="URUN_FOTO_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="UrunAdFoto" FunctionName="KALEORGANICModel.Store.UrunAdFoto">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="KALEORGANICModel.UrunAdFoto_Result">
+          <ScalarProperty Name="URUN_FOTO_ID" ColumnName="URUN_FOTO_ID" />
+          <ScalarProperty Name="URUN_ID" ColumnName="URUN_ID" />
+          <ScalarProperty Name="FOTO" ColumnName="FOTO" />
+          <ScalarProperty Name="URUN_ADI" ColumnName="URUN_ADI" />
+          <ScalarProperty Name="KAPALI" ColumnName="KAPALI" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <EntitySetMapping Name="T_SIPARIS">
+      <EntityTypeMapping TypeName="KALEORGANICModel.T_SIPARIS">
+        <MappingFragment StoreEntitySet="T_SIPARIS">
+          <ScalarProperty Name="KARGO_FIRMA_ID" ColumnName="KARGO_FIRMA_ID" />
+          <ScalarProperty Name="URUN_ID" ColumnName="URUN_ID" />
+          <ScalarProperty Name="KAPALI" ColumnName="KAPALI" />
+          <ScalarProperty Name="SIPARIS_TARIHI" ColumnName="SIPARIS_TARIHI" />
+          <ScalarProperty Name="URUN_SATIS_ID" ColumnName="URUN_SATIS_ID" />
+          <ScalarProperty Name="ADRES_ID" ColumnName="ADRES_ID" />
+          <ScalarProperty Name="MUSTERI_ID" ColumnName="MUSTERI_ID" />
+          <ScalarProperty Name="SIPARIS_ID" ColumnName="SIPARIS_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="T_MAIL">
+      <EntityTypeMapping TypeName="KALEORGANICModel.T_MAIL">
+        <MappingFragment StoreEntitySet="T_MAIL">
+          <ScalarProperty Name="MAIL_ADRES" ColumnName="MAIL_ADRES" />
+          <ScalarProperty Name="MAIL_GUNCELLEME_TARIHI" ColumnName="MAIL_GUNCELLEME_TARIHI" />
+          <ScalarProperty Name="MAIL_ICERIK" ColumnName="MAIL_ICERIK" />
+          <ScalarProperty Name="MAIL_KONU" ColumnName="MAIL_KONU" />
+          <ScalarProperty Name="MAIL_SOYAD" ColumnName="MAIL_SOYAD" />
+          <ScalarProperty Name="MAIL_AD" ColumnName="MAIL_AD" />
+          <ScalarProperty Name="MAIL_ID" ColumnName="MAIL_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="UrunYorumMusteri" FunctionName="KALEORGANICModel.Store.UrunYorumMusteri">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="KALEORGANICModel.UrunYorumMusteri_Result">
+          <ScalarProperty Name="URUN_YORUM_ID" ColumnName="URUN_YORUM_ID" />
+          <ScalarProperty Name="YORUM_AD_SOYAD" ColumnName="YORUM_AD_SOYAD" />
+          <ScalarProperty Name="YORUM_MAIL" ColumnName="YORUM_MAIL" />
+          <ScalarProperty Name="YORUM" ColumnName="YORUM" />
+          <ScalarProperty Name="YILDIZ" ColumnName="YILDIZ" />
+          <ScalarProperty Name="KAPALI" ColumnName="KAPALI" />
+          <ScalarProperty Name="GUNCELLEME_TARIHI" ColumnName="GUNCELLEME_TARIHI" />
+          <ScalarProperty Name="URUN_ID" ColumnName="URUN_ID" />
+          <ScalarProperty Name="URUN_ADI" ColumnName="URUN_ADI" />
+          <ScalarProperty Name="URUN_FIYAT" ColumnName="URUN_FIYAT" />
+          <ScalarProperty Name="FOTO" ColumnName="FOTO" />
+          <ScalarProperty Name="ACIKLAMA" ColumnName="ACIKLAMA" />
+          <ScalarProperty Name="ORTYILDIZ" ColumnName="ORTYILDIZ" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <EntitySetMapping Name="T_SEPET">
+      <EntityTypeMapping TypeName="KALEORGANICModel.T_SEPET">
+        <MappingFragment StoreEntitySet="T_SEPET">
+          <ScalarProperty Name="GUNCELLEME_TARIHI" ColumnName="GUNCELLEME_TARIHI" />
+          <ScalarProperty Name="URUN_SATIS_ID" ColumnName="URUN_SATIS_ID" />
+          <ScalarProperty Name="MUSTERI_ID" ColumnName="MUSTERI_ID" />
+          <ScalarProperty Name="URUN_ID" ColumnName="URUN_ID" />
+          <ScalarProperty Name="SEPET_ID" ColumnName="SEPET_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="T_URUN_SATIS">
+      <EntityTypeMapping TypeName="KALEORGANICModel.T_URUN_SATIS">
+        <MappingFragment StoreEntitySet="T_URUN_SATIS">
+          <ScalarProperty Name="GUNCELLEME_TARIHI" ColumnName="GUNCELLEME_TARIHI" />
+          <ScalarProperty Name="KAPALI" ColumnName="KAPALI" />
+          <ScalarProperty Name="SATIS_FIYAT" ColumnName="SATIS_FIYAT" />
+          <ScalarProperty Name="MIKTAR" ColumnName="MIKTAR" />
+          <ScalarProperty Name="KARGO_NO" ColumnName="KARGO_NO" />
+          <ScalarProperty Name="KARGO_FIRMA_ID" ColumnName="KARGO_FIRMA_ID" />
+          <ScalarProperty Name="MUSTERI_ID" ColumnName="MUSTERI_ID" />
+          <ScalarProperty Name="SATIS_TARIHI" ColumnName="SATIS_TARIHI" />
+          <ScalarProperty Name="URUN_ID" ColumnName="URUN_ID" />
+          <ScalarProperty Name="URUN_SATIS_ID" ColumnName="URUN_SATIS_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="Sepet" FunctionName="KALEORGANICModel.Store.Sepet">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="KALEORGANICModel.Sepet_Result">
+          <ScalarProperty Name="MUSTERI_ID" ColumnName="MUSTERI_ID" />
+          <ScalarProperty Name="MUSTERI_ADI" ColumnName="MUSTERI_ADI" />
+          <ScalarProperty Name="MUSTERI_SOYADI" ColumnName="MUSTERI_SOYADI" />
+          <ScalarProperty Name="MUSTERI_TELEFON" ColumnName="MUSTERI_TELEFON" />
+          <ScalarProperty Name="ADRES_ID" ColumnName="ADRES_ID" />
+          <ScalarProperty Name="ULKE" ColumnName="ULKE" />
+          <ScalarProperty Name="IL" ColumnName="IL" />
+          <ScalarProperty Name="ILCE" ColumnName="ILCE" />
+          <ScalarProperty Name="ADRES" ColumnName="ADRES" />
+          <ScalarProperty Name="URUN_ID" ColumnName="URUN_ID" />
+          <ScalarProperty Name="URUN_ADI" ColumnName="URUN_ADI" />
+          <ScalarProperty Name="URUN_FIYAT" ColumnName="URUN_FIYAT" />
+          <ScalarProperty Name="FOTO" ColumnName="FOTO" />
+          <ScalarProperty Name="KARGO_FIRMA_ID" ColumnName="KARGO_FIRMA_ID" />
+          <ScalarProperty Name="FIRMA_ADI" ColumnName="FIRMA_ADI" />
+          <ScalarProperty Name="URUN_SATIS_ID" ColumnName="URUN_SATIS_ID" />
+          <ScalarProperty Name="MIKTAR" ColumnName="MIKTAR" />
+          <ScalarProperty Name="SIPARIS_ID" ColumnName="SIPARIS_ID" />
+          <ScalarProperty Name="SIPARIS_TARIHI" ColumnName="SIPARIS_TARIHI" />
+          <ScalarProperty Name="KAPALI" ColumnName="KAPALI" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+  </EntityContainerMapping>
+</Mapping>

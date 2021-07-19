@@ -1,0 +1,99 @@
+﻿@model KALEORG.Models.MusteriAdresList_Result
+@{
+    ViewBag.Title = "AdresForm";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+
+<section role="main" class="content-body card-margin">
+    <header class="page-header">
+        <h2>Adres Ekle / Güncelle</h2>
+
+        <div class="right-wrapper text-right">
+            <ol class="breadcrumbs">
+                <li>
+                    <a href="/Home/Index">
+                        <i class="fas fa-home"></i>
+                    </a>
+                </li>
+                <li><span><a href="/Admin/AdresAdmin/Index/">Adres Listesi</a> </span></li>
+                <li><span>Adres Ekle / Güncelle</span></li>
+            </ol>
+
+            <a class="sidebar-right-toggle" data-open="sidebar-right"><i class="fas fa-chevron-left"></i></a>
+        </div>
+    </header>
+
+    <!-- start: page -->
+    
+
+        <div class="row" style="padding:50px 0 0 0">
+            <div class="col-lg-12">
+               
+                    <section class="card">
+                        <header class="card-header">
+                            <div class="card-actions">
+                            </div>
+                            <h2 class="card-title">Adres Form</h2>
+
+                            <p class="card-subtitle">
+                                Lütfen (*) içeren alanları boş bırakmayınız.!
+                            </p>
+                        </header>
+                        <div class="card-body">
+                            <div class="row form-group">
+                                <div class="col-lg-5">
+                                    @using (Html.BeginForm("Save", "AdresAdmin", FormMethod.Post))
+                                    {
+                                        <div class="form-group">
+                                            <label class="col-form-label">MÜŞTERİ ADI (*)</label>
+                                            @Html.DropDownListFor(m => m.MUSTERI_ID, new SelectList(ViewBag.Musteri, "value", "text"), new { @class = "form-control", @required = "required" })
+                                            @Html.ValidationMessageFor(m => m.MUSTERI_ID)
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-form-label">ULKE (*)</label>
+                                            @Html.TextBoxFor(m => m.ULKE, new { @class = "form-control", @type = "text", @MaxLength = "30", @required = "required" })
+                                            @Html.ValidationMessageFor(m => m.ULKE)
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-form-label">SEHIR (*)</label>
+                                            @Html.TextBoxFor(m => m.IL, new { @class = "form-control", @type = "text", @MaxLength = "50", @required = "required" })
+                                            @Html.ValidationMessageFor(m => m.IL)
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-form-label">İLÇE (*)</label>
+                                            @Html.TextBoxFor(m => m.ILCE, new { @class = "form-control", @type = "text", @MaxLength = "30", @required = "required" })
+                                            @Html.ValidationMessageFor(m => m.ILCE)
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-form-label">ADRES (*)</label>
+                                            @Html.TextBoxFor(m => m.ADRES, new { @class = "form-control", @type = "text", @MaxLength = "500", @required = "required" })
+                                            @Html.ValidationMessageFor(m => m.ADRES)
+                                        </div>
+
+                                        @Html.HiddenFor(m => m.ADRES_ID)
+                                        <button type="submit" class="btn btn-success">KAYDET</button>
+                                    }
+
+                                </div>
+                            </div>
+                        </div>
+                        <footer class="card-footer text-right">
+                           
+                        </footer>
+                    </section>
+               
+                </div>
+        </div>
+
+    
+</section>
+
+@section scripts
+{
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+    <script src="~/Scripts/MaxMinLength.js"></script>
+
+}
+

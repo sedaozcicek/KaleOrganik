@@ -1,0 +1,125 @@
+﻿  <!-- Header Start -->
+<header class="andro_header header-2 can-sticky">
+
+    <!-- Topheader Start -->
+    <div class="andro_header-top">
+        <div class="container">
+            <div class="andro_header-top-inner">
+                <ul class="andro_header-top-sm andro_sm">
+                   
+                    <li> <a href="https://www.instagram.com/kale_organik/?igshid=1hzbqpu4lidmg"> <i class="fab fa-instagram"></i> </a> </li>                    
+                    <li> <a href="https://tr.linkedin.com/in/kale-organik-5581171a9"> <i class="fab fa-linkedin-in"></i> </a> </li>
+                    
+                </ul>
+                
+            </div>
+        </div>
+    </div>
+    <!-- Topheader End -->
+    <!-- Middle Header Start -->
+    <div class="andro_header-middle">
+        <div class="container">
+            <nav class="navbar">
+                <!-- Logo -->
+                <a class="navbar-brand" href="/Home/Index"> <img src="/img/kalelogo.png" alt="logo"> </a>
+
+                <!-- Menu -->
+                <ul class="navbar-nav">
+                    <li class="menu-item menu-item-has-children"><a href="/Hakkimizda/Index">HAKKIMIZDA</a></li>
+                    <li class="menu-item menu-item-has-children"><a href="/Iletisim/Index">İLETİŞİM</a></li>
+                    <li class="menu-item menu-item-has-children"><a href="/UretimYeri/Index">ÜRETİM YERİMİZ</a></li>
+                    <li class="menu-item menu-item-has-children mega-menu-wrapper"><a href="/Sertifika/Index">SERTİFİKALAR</a></li>
+                    <li class="menu-item"> <a href="#">Ek Alan</a> </li>
+                </ul>                
+                <!--SEPET-->
+                <div class="andro_header-controls">
+
+                    <ul class="andro_header-controls-inner">
+           
+            <li class="andro_header-cart">
+                <a href="/Sepet/Index" title="Sepet">
+                    <i class="flaticon-shopping-basket"></i>
+                    <div class="andro_header-cart-content">
+                        <span>SEPET</span>
+                    </div>
+                </a>
+            </li>
+        </ul>
+
+                    <!-- Toggler -->
+                    <div class="aside-toggler aside-trigger-left">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+
+                </div>
+            </nav>
+        </div>
+    </div>
+    <!-- Middle Header End -->
+    <!-- Bottom Header Start -->
+    <div class="andro_header-bottom">
+        <div class="container">
+
+            <div class="andro_header-bottom-inner">
+
+
+                <!-- Search Form -->
+                <div class="andro_search-adv">
+                    <form method="post" action="@Url.Action("arama","Urun")">
+                        <div class="andro_search-adv-cats"> 
+                            
+                            <span>Ürün Kategorileri</span>
+
+                            <div class="sub-menu">
+                                <div class="andro_dropdown-scroll">
+                                    <label>
+                                        <a href="/Urun/Index/0">
+                                            Tüm Ürünler
+                                        </a>
+                                    </label>
+                                    @foreach (var i in ViewBag.kategoriList)
+                                    {
+                                        <label>
+                                            <a href="/Urun/Index/@i.KATEGORI_ID">
+                                                
+                                                @i.KATEGORI_ADI                                                
+                                            </a>
+                                        </label>
+                                    }
+
+
+                                </div>
+
+                            </div>
+
+                        </div>
+                        <div class="andro_search-adv-input">
+                           
+                                <input type="text" class="form-control" placeholder="Lütfen Aradığınız Ürünün En Az 3 Karakterini Giriniz" name="aranan" id="aranan" pattern=".{3,}" required>
+
+                                <button type="submit" name="button"><i class="fa fa-search"></i></button>
+                            
+                            </div>
+                    </form>
+                </div>
+
+                <!-- Side navigation toggle -->
+                <div class="aside-toggler aside-trigger-right desktop-toggler">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+
+            </div>
+            
+           
+        </div>
+        
+    </div>
+    <!-- Bottom Header End -->
+    
+
+</header>
+<!-- Header End -->

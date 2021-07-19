@@ -1,0 +1,82 @@
+﻿@model KALEORG.Areas.Admin.Models.FileModel
+@{
+                /**/
+
+                ViewBag.Title = "UrunFotoForm";
+                Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+
+<section role="main" class="content-body card-margin">
+    <header class="page-header">
+        <h2>Ürün Foto Ekle / Güncelle</h2>
+
+        <div class="right-wrapper text-right">
+            <ol class="breadcrumbs">
+                <li>
+                    <a href="/Home/Index">
+                        <i class="fas fa-home"></i>
+                    </a>
+                </li>
+                <li><span><a href="/Admin/UrunAdmin/Index/">Ürün Listesi</a> </span></li>
+                <li><span>Ürün Foto Ekle / Güncelle</span></li>
+            </ol>
+
+            <a class="sidebar-right-toggle" data-open="sidebar-right"><i class="fas fa-chevron-left"></i></a>
+        </div>
+    </header>
+
+    <!-- start: page -->
+    @using (Html.BeginForm("Save", "UrunFoto", FormMethod.Post, new { @enctype = "multipart/form-data" }))
+    {
+
+        <div class="row" style="padding:50px 0 0 0">
+            <div class="col-lg-12">
+                <section class="card">
+                    <header class="card-header">
+                        <div class="card-actions">
+                        </div>
+                        <h2 class="card-title">Ürün Foto Form</h2>
+
+                        <p class="card-subtitle">
+                            Lütfen (*) içeren alanları boş bırakmayınız.!
+                        </p>
+                    </header>
+                    <div class="card-body">
+                        <div class="row form-group">
+                            <div class="col-lg-5">
+                                <div class="form-group">
+                                    <label class="col-form-label">Ürün ADI (*)</label>
+                                    @Html.DropDownListFor(m => m.URUN_ID, new SelectList(ViewBag.urunSelect, "value", "text"), new { @class = "form-control", @required = "required" })
+                                    @Html.ValidationMessageFor(m => m.URUN_ID)
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-form-label">FOTOĞRAF ()</label> <br />
+                                    @Html.TextBoxFor(m=> m.files, "", new { @type="file", @multiple="multiple"})
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <footer class="card-footer text-right">
+                       @Html.HiddenFor(m=>m.URUN_FOTO_ID)
+                        <button class="btn btn-success">KAYDET</button>
+                    </footer>
+                </section>
+            </div>
+        </div>
+
+    }
+
+</section>
+
+@section scripts
+{
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+    <script src="~/Scripts/MaxMinLength.js"></script>
+
+}
+
+
+
+

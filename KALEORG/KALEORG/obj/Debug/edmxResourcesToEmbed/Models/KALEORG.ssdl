@@ -1,0 +1,407 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="KALEORGANICModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="KULLANICI_KATEGORI">
+    <Key>
+      <PropertyRef Name="KULLANICI_KATEGORI_ID" />
+    </Key>
+    <Property Name="KULLANICI_KATEGORI_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="KULLANICI_ID" Type="int" Nullable="false" />
+    <Property Name="KATEGORI" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="T_ADRES">
+    <Key>
+      <PropertyRef Name="ADRES_ID" />
+    </Key>
+    <Property Name="ADRES_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="MUSTERI_ID" Type="int" Nullable="false" />
+    <Property Name="ULKE" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="IL" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="ILCE" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="POSTAKODU" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="ADRES" Type="varchar" MaxLength="500" Nullable="false" />
+    <Property Name="KAPALI" Type="bit" Nullable="false" />
+    <Property Name="GUNCELLEME_TARIHI" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="T_HAKKIMIZDA">
+    <Key>
+      <PropertyRef Name="HAKKIMIZDA_ID" />
+    </Key>
+    <Property Name="HAKKIMIZDA_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="HAKKIMIZDA_ICERIK" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="T_ILETISIM">
+    <Key>
+      <PropertyRef Name="ILETISIM_ID" />
+    </Key>
+    <Property Name="ILETISIM_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ADRES" Type="varchar" MaxLength="250" Nullable="false" />
+    <Property Name="TELEFON1" Type="char" MaxLength="15" Nullable="false" />
+    <Property Name="TELEFON2" Type="char" MaxLength="15" Nullable="false" />
+    <Property Name="FAKS" Type="char" MaxLength="15" Nullable="false" />
+    <Property Name="MAIL_MUHASEBE" Type="varchar" MaxLength="75" Nullable="false" />
+    <Property Name="MAIL_SATIS" Type="varchar" MaxLength="75" Nullable="false" />
+    <Property Name="MAIL_INFO" Type="varchar" MaxLength="75" Nullable="false" />
+  </EntityType>
+  <EntityType Name="T_KARGO">
+    <Key>
+      <PropertyRef Name="KARGO_FIRMA_ID" />
+    </Key>
+    <Property Name="KARGO_FIRMA_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FIRMA_ADI" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="SOZLESME_NO" Type="varchar" MaxLength="50" />
+    <Property Name="SUBE" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="SUBE_NO" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="T_KATEGORI">
+    <Key>
+      <PropertyRef Name="KATEGORI_ID" />
+    </Key>
+    <Property Name="KATEGORI_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="KATEGORI_ADI" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="KAPALI" Type="bit" Nullable="false" />
+    <Property Name="GUNCELLEME_TARIHI" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="T_KULLANICI">
+    <Key>
+      <PropertyRef Name="Kullanici_ID" />
+    </Key>
+    <Property Name="Kullanici_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Kullanici_Adi" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Sifre" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="KAPALI" Type="bit" Nullable="false" />
+    <Property Name="GUNCELLEME_TARIHI" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="T_MAIL">
+    <Key>
+      <PropertyRef Name="MAIL_ID" />
+    </Key>
+    <Property Name="MAIL_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="MAIL_AD" Type="varchar" MaxLength="150" Nullable="false" />
+    <Property Name="MAIL_SOYAD" Type="varchar" MaxLength="150" Nullable="false" />
+    <Property Name="MAIL_KONU" Type="varchar" MaxLength="150" Nullable="false" />
+    <Property Name="MAIL_ICERIK" Type="varchar" MaxLength="500" Nullable="false" />
+    <Property Name="MAIL_GUNCELLEME_TARIHI" Type="datetime" Nullable="false" />
+    <Property Name="MAIL_ADRES" Type="varchar" MaxLength="250" Nullable="false" />
+  </EntityType>
+  <EntityType Name="T_MUSTERI">
+    <Key>
+      <PropertyRef Name="MUSTERI_ID" />
+    </Key>
+    <Property Name="MUSTERI_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="MUSTERI_ADI" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="MUSTERI_SOYADI" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="MUSTERI_MAIL" Type="varchar" MaxLength="75" Nullable="false" />
+    <Property Name="MUSTERI_TELEFON" Type="char" MaxLength="15" Nullable="false" />
+    <Property Name="KAPALI" Type="bit" Nullable="false" />
+    <Property Name="GUNCELLEME_TARIHI" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="T_SEPET">
+    <Key>
+      <PropertyRef Name="SEPET_ID" />
+    </Key>
+    <Property Name="SEPET_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="URUN_ID" Type="int" Nullable="false" />
+    <Property Name="MUSTERI_ID" Type="int" Nullable="false" />
+    <Property Name="URUN_SATIS_ID" Type="int" Nullable="false" />
+    <Property Name="GUNCELLEME_TARIHI" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="T_SERTIFIKA">
+    <Key>
+      <PropertyRef Name="SERTIFIKA_ID" />
+    </Key>
+    <Property Name="SERTIFIKA_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="SERTIFIKA_ADI" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="KAPALI" Type="bit" Nullable="false" />
+    <Property Name="GUNCELLEME_TARIHI" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="T_SIPARIS">
+    <Key>
+      <PropertyRef Name="SIPARIS_ID" />
+    </Key>
+    <Property Name="SIPARIS_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="MUSTERI_ID" Type="int" Nullable="false" />
+    <Property Name="ADRES_ID" Type="int" Nullable="false" />
+    <Property Name="URUN_ID" Type="int" Nullable="false" />
+    <Property Name="URUN_SATIS_ID" Type="int" Nullable="false" />
+    <Property Name="KARGO_FIRMA_ID" Type="int" Nullable="false" />
+    <Property Name="SIPARIS_TARIHI" Type="datetime" Nullable="false" />
+    <Property Name="KAPALI" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="T_URUN">
+    <Key>
+      <PropertyRef Name="URUN_ID" />
+    </Key>
+    <Property Name="URUN_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="KATEGORI_ID" Type="int" Nullable="false" />
+    <Property Name="URUN_ADI" Type="varchar" MaxLength="150" Nullable="false" />
+    <Property Name="URUN_FIYAT" Type="decimal" Precision="7" Scale="2" Nullable="false" />
+    <Property Name="FOTO" Type="varchar" MaxLength="250" Nullable="false" />
+    <Property Name="ACIKLAMA" Type="varchar" MaxLength="1000" Nullable="false" />
+    <Property Name="KAPALI" Type="bit" Nullable="false" />
+    <Property Name="GUNCELLEME_TARIHI" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="T_URUN_FOTO">
+    <Key>
+      <PropertyRef Name="URUN_FOTO_ID" />
+    </Key>
+    <Property Name="URUN_FOTO_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="URUN_ID" Type="int" Nullable="false" />
+    <Property Name="FOTO" Type="varchar" MaxLength="250" Nullable="false" />
+  </EntityType>
+  <EntityType Name="T_URUN_SATIS">
+    <Key>
+      <PropertyRef Name="URUN_SATIS_ID" />
+    </Key>
+    <Property Name="URUN_SATIS_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="URUN_ID" Type="int" Nullable="false" />
+    <Property Name="SATIS_TARIHI" Type="datetime" Nullable="false" />
+    <Property Name="MUSTERI_ID" Type="int" Nullable="false" />
+    <Property Name="KARGO_FIRMA_ID" Type="int" Nullable="false" />
+    <Property Name="KARGO_NO" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="MIKTAR" Type="tinyint" Nullable="false" />
+    <Property Name="SATIS_FIYAT" Type="decimal" Precision="7" Scale="2" Nullable="false" />
+    <Property Name="KAPALI" Type="bit" Nullable="false" />
+    <Property Name="GUNCELLEME_TARIHI" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="T_URUN_YORUM">
+    <Key>
+      <PropertyRef Name="URUN_YORUM_ID" />
+    </Key>
+    <Property Name="URUN_YORUM_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="URUN_ID" Type="int" Nullable="false" />
+    <Property Name="KAPALI" Type="bit" Nullable="false" />
+    <Property Name="GUNCELLEME_TARIHI" Type="datetime" Nullable="false" />
+    <Property Name="YORUM" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="YILDIZ" Type="int" Nullable="false" />
+    <Property Name="YORUM_AD_SOYAD" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="YORUM_MAIL" Type="varchar" MaxLength="75" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_KULLANICI_KATEGORI_T_KULLANICI">
+    <End Role="T_KULLANICI" Type="Self.T_KULLANICI" Multiplicity="1" />
+    <End Role="KULLANICI_KATEGORI" Type="Self.KULLANICI_KATEGORI" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="T_KULLANICI">
+        <PropertyRef Name="Kullanici_ID" />
+      </Principal>
+      <Dependent Role="KULLANICI_KATEGORI">
+        <PropertyRef Name="KULLANICI_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_T_ADRES_T_MUSTERI">
+    <End Role="T_MUSTERI" Type="Self.T_MUSTERI" Multiplicity="1" />
+    <End Role="T_ADRES" Type="Self.T_ADRES" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="T_MUSTERI">
+        <PropertyRef Name="MUSTERI_ID" />
+      </Principal>
+      <Dependent Role="T_ADRES">
+        <PropertyRef Name="MUSTERI_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_T_SEPET_T_MUSTERI">
+    <End Role="T_MUSTERI" Type="Self.T_MUSTERI" Multiplicity="1" />
+    <End Role="T_SEPET" Type="Self.T_SEPET" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="T_MUSTERI">
+        <PropertyRef Name="MUSTERI_ID" />
+      </Principal>
+      <Dependent Role="T_SEPET">
+        <PropertyRef Name="MUSTERI_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_T_SEPET_T_URUN">
+    <End Role="T_URUN" Type="Self.T_URUN" Multiplicity="1" />
+    <End Role="T_SEPET" Type="Self.T_SEPET" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="T_URUN">
+        <PropertyRef Name="URUN_ID" />
+      </Principal>
+      <Dependent Role="T_SEPET">
+        <PropertyRef Name="URUN_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_T_SEPET_T_URUN_SATIS">
+    <End Role="T_URUN_SATIS" Type="Self.T_URUN_SATIS" Multiplicity="1" />
+    <End Role="T_SEPET" Type="Self.T_SEPET" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="T_URUN_SATIS">
+        <PropertyRef Name="URUN_SATIS_ID" />
+      </Principal>
+      <Dependent Role="T_SEPET">
+        <PropertyRef Name="URUN_SATIS_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_T_SIPARIS_T_MUSTERI">
+    <End Role="T_MUSTERI" Type="Self.T_MUSTERI" Multiplicity="1" />
+    <End Role="T_SIPARIS" Type="Self.T_SIPARIS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="T_MUSTERI">
+        <PropertyRef Name="MUSTERI_ID" />
+      </Principal>
+      <Dependent Role="T_SIPARIS">
+        <PropertyRef Name="MUSTERI_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_T_SIPARIS_T_URUN_SATIS">
+    <End Role="T_URUN_SATIS" Type="Self.T_URUN_SATIS" Multiplicity="1" />
+    <End Role="T_SIPARIS" Type="Self.T_SIPARIS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="T_URUN_SATIS">
+        <PropertyRef Name="URUN_SATIS_ID" />
+      </Principal>
+      <Dependent Role="T_SIPARIS">
+        <PropertyRef Name="URUN_SATIS_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_T_URUN_FOTO_T_URUN">
+    <End Role="T_URUN" Type="Self.T_URUN" Multiplicity="1" />
+    <End Role="T_URUN_FOTO" Type="Self.T_URUN_FOTO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="T_URUN">
+        <PropertyRef Name="URUN_ID" />
+      </Principal>
+      <Dependent Role="T_URUN_FOTO">
+        <PropertyRef Name="URUN_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_T_URUN_SATIS_T_MUSTERI">
+    <End Role="T_MUSTERI" Type="Self.T_MUSTERI" Multiplicity="1" />
+    <End Role="T_URUN_SATIS" Type="Self.T_URUN_SATIS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="T_MUSTERI">
+        <PropertyRef Name="MUSTERI_ID" />
+      </Principal>
+      <Dependent Role="T_URUN_SATIS">
+        <PropertyRef Name="MUSTERI_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_T_URUN_SATIS_T_URUN">
+    <End Role="T_URUN" Type="Self.T_URUN" Multiplicity="1" />
+    <End Role="T_URUN_SATIS" Type="Self.T_URUN_SATIS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="T_URUN">
+        <PropertyRef Name="URUN_ID" />
+      </Principal>
+      <Dependent Role="T_URUN_SATIS">
+        <PropertyRef Name="URUN_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_T_URUN_T_KATEGORI">
+    <End Role="T_KATEGORI" Type="Self.T_KATEGORI" Multiplicity="1" />
+    <End Role="T_URUN" Type="Self.T_URUN" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="T_KATEGORI">
+        <PropertyRef Name="KATEGORI_ID" />
+      </Principal>
+      <Dependent Role="T_URUN">
+        <PropertyRef Name="KATEGORI_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_T_URUN_YORUM_T_URUN">
+    <End Role="T_URUN" Type="Self.T_URUN" Multiplicity="1" />
+    <End Role="T_URUN_YORUM" Type="Self.T_URUN_YORUM" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="T_URUN">
+        <PropertyRef Name="URUN_ID" />
+      </Principal>
+      <Dependent Role="T_URUN_YORUM">
+        <PropertyRef Name="URUN_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Function Name="MusteriAdresList" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="musteriId" Type="int" Mode="In" />
+  </Function>
+  <Function Name="Sepet" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="KAPALI" Type="int" Mode="In" />
+  </Function>
+  <Function Name="UrunAdFoto" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="KAPALI" Type="int" Mode="In" />
+  </Function>
+  <Function Name="UrunKategoriList" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="kapali" Type="int" Mode="In" />
+  </Function>
+  <Function Name="UrunSatisUrunMusteri" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="usKAPALI" Type="int" Mode="In" />
+  </Function>
+  <Function Name="UrunYorumMusteri" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="KAPALI" Type="int" Mode="In" />
+  </Function>
+  <EntityContainer Name="KALEORGANICModelStoreContainer">
+    <EntitySet Name="KULLANICI_KATEGORI" EntityType="Self.KULLANICI_KATEGORI" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="T_ADRES" EntityType="Self.T_ADRES" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="T_HAKKIMIZDA" EntityType="Self.T_HAKKIMIZDA" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="T_ILETISIM" EntityType="Self.T_ILETISIM" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="T_KARGO" EntityType="Self.T_KARGO" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="T_KATEGORI" EntityType="Self.T_KATEGORI" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="T_KULLANICI" EntityType="Self.T_KULLANICI" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="T_MAIL" EntityType="Self.T_MAIL" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="T_MUSTERI" EntityType="Self.T_MUSTERI" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="T_SEPET" EntityType="Self.T_SEPET" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="T_SERTIFIKA" EntityType="Self.T_SERTIFIKA" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="T_SIPARIS" EntityType="Self.T_SIPARIS" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="T_URUN" EntityType="Self.T_URUN" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="T_URUN_FOTO" EntityType="Self.T_URUN_FOTO" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="T_URUN_SATIS" EntityType="Self.T_URUN_SATIS" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="T_URUN_YORUM" EntityType="Self.T_URUN_YORUM" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_KULLANICI_KATEGORI_T_KULLANICI" Association="Self.FK_KULLANICI_KATEGORI_T_KULLANICI">
+      <End Role="T_KULLANICI" EntitySet="T_KULLANICI" />
+      <End Role="KULLANICI_KATEGORI" EntitySet="KULLANICI_KATEGORI" />
+    </AssociationSet>
+    <AssociationSet Name="FK_T_ADRES_T_MUSTERI" Association="Self.FK_T_ADRES_T_MUSTERI">
+      <End Role="T_MUSTERI" EntitySet="T_MUSTERI" />
+      <End Role="T_ADRES" EntitySet="T_ADRES" />
+    </AssociationSet>
+    <AssociationSet Name="FK_T_SEPET_T_MUSTERI" Association="Self.FK_T_SEPET_T_MUSTERI">
+      <End Role="T_MUSTERI" EntitySet="T_MUSTERI" />
+      <End Role="T_SEPET" EntitySet="T_SEPET" />
+    </AssociationSet>
+    <AssociationSet Name="FK_T_SEPET_T_URUN" Association="Self.FK_T_SEPET_T_URUN">
+      <End Role="T_URUN" EntitySet="T_URUN" />
+      <End Role="T_SEPET" EntitySet="T_SEPET" />
+    </AssociationSet>
+    <AssociationSet Name="FK_T_SEPET_T_URUN_SATIS" Association="Self.FK_T_SEPET_T_URUN_SATIS">
+      <End Role="T_URUN_SATIS" EntitySet="T_URUN_SATIS" />
+      <End Role="T_SEPET" EntitySet="T_SEPET" />
+    </AssociationSet>
+    <AssociationSet Name="FK_T_SIPARIS_T_MUSTERI" Association="Self.FK_T_SIPARIS_T_MUSTERI">
+      <End Role="T_MUSTERI" EntitySet="T_MUSTERI" />
+      <End Role="T_SIPARIS" EntitySet="T_SIPARIS" />
+    </AssociationSet>
+    <AssociationSet Name="FK_T_SIPARIS_T_URUN_SATIS" Association="Self.FK_T_SIPARIS_T_URUN_SATIS">
+      <End Role="T_URUN_SATIS" EntitySet="T_URUN_SATIS" />
+      <End Role="T_SIPARIS" EntitySet="T_SIPARIS" />
+    </AssociationSet>
+    <AssociationSet Name="FK_T_URUN_FOTO_T_URUN" Association="Self.FK_T_URUN_FOTO_T_URUN">
+      <End Role="T_URUN" EntitySet="T_URUN" />
+      <End Role="T_URUN_FOTO" EntitySet="T_URUN_FOTO" />
+    </AssociationSet>
+    <AssociationSet Name="FK_T_URUN_SATIS_T_MUSTERI" Association="Self.FK_T_URUN_SATIS_T_MUSTERI">
+      <End Role="T_MUSTERI" EntitySet="T_MUSTERI" />
+      <End Role="T_URUN_SATIS" EntitySet="T_URUN_SATIS" />
+    </AssociationSet>
+    <AssociationSet Name="FK_T_URUN_SATIS_T_URUN" Association="Self.FK_T_URUN_SATIS_T_URUN">
+      <End Role="T_URUN" EntitySet="T_URUN" />
+      <End Role="T_URUN_SATIS" EntitySet="T_URUN_SATIS" />
+    </AssociationSet>
+    <AssociationSet Name="FK_T_URUN_T_KATEGORI" Association="Self.FK_T_URUN_T_KATEGORI">
+      <End Role="T_KATEGORI" EntitySet="T_KATEGORI" />
+      <End Role="T_URUN" EntitySet="T_URUN" />
+    </AssociationSet>
+    <AssociationSet Name="FK_T_URUN_YORUM_T_URUN" Association="Self.FK_T_URUN_YORUM_T_URUN">
+      <End Role="T_URUN" EntitySet="T_URUN" />
+      <End Role="T_URUN_YORUM" EntitySet="T_URUN_YORUM" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

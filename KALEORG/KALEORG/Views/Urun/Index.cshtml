@@ -1,0 +1,85 @@
+﻿@model PagedList.IPagedList<KALEORG.Models.T_URUN>
+
+@using PagedList.Mvc;
+@using PagedList;
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<!-- Subheader Start -->
+<div class="andro_subheader pattern-bg primary-bg">
+    <div class="container">
+        <div class="andro_subheader-inner">
+            <h1>ÜRÜNLER</h1>
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="/Home/Index">Anasayfa</a></li>
+                    <li class="breadcrumb-item"><a href="/UrunDetay/Index">Ürünler</a></li>
+                </ol>
+
+            </nav>
+        </div>
+    </div>
+</div>
+<!-- Subheader End -->
+<!-- Blog Posts Start -->
+<div class="section">
+    <div class="container">
+        <div class="row masonry">
+
+            <!-- Article Start -->
+            @if (Model.Count >0)
+            {
+                foreach (var i in Model)
+                {
+                    <div class="col-lg-4 col-md-6 masonry-item">
+                        <article class="andro_post">
+                            <div class="andro_post-thumb">
+                                <a href="/UrunDetay/Index/@i.URUN_ID">
+                                    <img style="width: 230px;height : 200px;" src="~/img/urun/@i.FOTO"  alt="post">
+                                </a>
+                            </div>
+                            <div class="andro_post-body">
+                                <div class="andro_post-categories">
+                                    <img style="width: 50px;height : 50px;" _ngcontent-rsc-c212 src="~/img/analiz.jpg" title="Analiz" alt="Analiz" />
+                                    <img style="width: 50px;height : 50px;" _ngcontent-rsc-c212 src="~/img/organik.jpg" title="Organik"  alt="Organik" />
+                                    <img style="width: 50px;height : 50px;" _ngcontent-rsc-c212 src="~/img/yerli üretim.jpg" title="Yerli Üretim"  alt="Yerli Üretim" />
+                                 
+                                </div>
+                                <div class="andro_post-desc">
+                                    <h5> <a href="/UrunDetay/Index/@i.URUN_ID">@i.URUN_ADI</a> </h5>
+                                    <span> <span class="fw-600">Kaydedilme tarihi:</span>  <a href="post-single.html" class="andro_post-date">@i.GUNCELLEME_TARIHI.ToString(string.Format("MM/yyyy")) </a> </span>
+                                    
+                                </div>
+                                <a class="andro_btn-custom btn-block" href="/UrunDetay/Index/@i.URUN_ID"> Ürün İncele </a>
+                            </div>
+                        </article>
+                    </div>
+
+
+                }
+            }
+            else
+            {
+                <label>Aramanızla ilgili ürün bulunamamıştır. Lütfen Tekrar Deneyiniz. :)</label>
+            }
+           
+            <!-- Article End -->
+
+
+        </div>
+
+        <!-- Pagination Start -->
+        <ul class="pagination mb-0">
+            <li class="page-item">
+                <a class="page-link">  </a>                  
+                    @Html.PagedListPager(Model, page => Url.Action("Index", new { ViewBag.Id, page, pagesize = Model.PageSize }))
+            </li>
+           
+        </ul>
+        <!-- Pagination End -->
+
+    </div>
+</div>
+
+<!-- Blog Posts End -->

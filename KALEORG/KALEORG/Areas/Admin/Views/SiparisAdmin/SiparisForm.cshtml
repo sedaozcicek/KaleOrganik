@@ -1,0 +1,87 @@
+﻿@model KALEORG.Models.T_SIPARIS
+@{
+    ViewBag.Title = "SiparisForm";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<section role="main" class="content-body card-margin">
+    <header class="page-header">
+        <h2>Sipariş Ekle / Güncelle</h2>
+
+        <div class="right-wrapper text-right">
+            <ol class="breadcrumbs">
+                <li>
+                    <a href="/Home/Index">
+                        <i class="fas fa-home"></i>
+                    </a>
+                </li>
+                <li><span><a href="/Admin/SiparisAdmin/Index/">Sipariş Listesi</a> </span></li>
+                <li><span>Sipariş Ekle / Güncelle</span></li>
+            </ol>
+
+            <a class="sidebar-right-toggle" data-open="sidebar-right"><i class="fas fa-chevron-left"></i></a>
+        </div>
+    </header>
+
+    start: page
+    @using (Html.BeginForm("Save", "SiparisAdmin", FormMethod.Post))
+    {
+
+        <div class="row" style="padding:50px 0 0 0">
+            <div class="col-lg-12">
+                <section class="card">
+                    <header class="card-header">
+                        <div class="card-actions">
+                        </div>
+                        <h2 class="card-title">Sipariş Form</h2>
+
+                        <p class="card-subtitle">
+                            Lütfen (*) içeren alanları boş bırakmayınız.!
+                        </p>
+                    </header>
+                    <div class="card-body">
+                        <div class="row form-group">
+                            <div class="col-lg-5">
+                                <div class="form-group">
+                                    <label class="col-form-label">MÜŞTERİ ADI (*)</label>
+                                    @Html.DropDownListFor(m => m.MUSTERI_ID, new SelectList(ViewBag.Musteri, "value", "text"), new { @class = "form-control", @required = "required" })
+                                    @Html.ValidationMessageFor(m => m.MUSTERI_ID)
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-form-label">ADRES (*)</label>
+                                    @Html.DropDownListFor(m => m.ADRES_ID, new SelectList(ViewBag.Adres, "value", "text"), new { @class = "form-control", @required = "required" })
+                                    @Html.ValidationMessageFor(m => m.ADRES_ID)
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="col-form-label">ÜRÜN SATIŞ (*)</label>
+                                    @Html.DropDownListFor(m => m.URUN_SATIS_ID, new SelectList(ViewBag.UrunSatis, "value", "text"), new { @class = "form-control", @required = "required" })
+                                    @Html.ValidationMessageFor(m => m.URUN_SATIS_ID)
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-form-label">SIPARIS TARIHI (*)</label>
+                                    @Html.TextBoxFor(m => m.SIPARIS_TARIHI, new { @class = "form-control", @type = "date", @required = "required" })
+                                    @Html.ValidationMessageFor(m => m.SIPARIS_TARIHI)
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <footer class="card-footer text-right">
+                        @Html.HiddenFor(m => m.SIPARIS_ID)
+                        <button class="btn btn-success">KAYDET</button>
+                    </footer>
+                </section>
+            </div>
+        </div>
+
+    }
+</section>
+
+@section scripts
+{
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+    <script src="~/Scripts/MaxMinLength.js"></script>
+
+}

@@ -1,0 +1,1056 @@
+﻿
+@model List<KALEORG.Models.KULLANICI_KATEGORI>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+
+<section role="main" class="content-body">
+
+    <header class="page-header">
+        <h2>PERSONEL YETKİ LİSTESİ</h2>
+        <div class="right-wrapper text-right">
+            <ol class="breadcrumbs">
+                <li>
+                    <a href="/Home/Index">
+                        <i class="fas fa-home"></i>
+                    </a>
+                </li>
+                <li><span>Personel Yetki Listesi</span></li>
+
+            </ol>
+        </div>
+    </header>
+
+
+    <div class="row" style="padding:50px 0 0 0">
+        <div class="col">
+            <section class="card">
+                <header class="card-header">
+                    <div class="card-actions">
+
+                    </div>
+
+                    <h2 class="card-title">Personel Yetki Listesi</h2>
+                </header>
+                @using (Html.BeginForm("Arama", "YetkiAdmin", FormMethod.Post))
+                {
+                    <div class="card-body">
+                        <div class="form-group row">
+                            <label class="col-lg-3 control-label text-lg-right pt-2">KULLANICI</label>
+                            <div class="col-lg-6">
+                                @Html.DropDownList("KULLANICI", new SelectList(ViewBag.user, "value", "text"), new { @class = "form-control", @required = "required" })
+                                @Html.ValidationMessage("KULLANICI")
+
+                            </div>
+                            <div class="col-lg-3">
+                                <button class="btn btn-success">GETİR</button>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </section>
+        </div>
+    </div>
+
+    @{
+        if (Model != null)
+        {
+
+
+            List<string> yetkiler = new List<string>();
+            foreach (var i in Model)
+            {
+                yetkiler.Add(i.KATEGORI.ToString());
+            }
+
+
+
+    <div class="row" style="padding:50px 0 0 0">
+        @*MUSTERİADRES KARTI*@
+        <div class="col">
+
+            <section class="card">
+                <header class="card-header">
+                    <div class="card-actions">
+                    </div>
+                    <h2 class="card-title"></h2>
+                </header>
+                <div class="card-body">
+                    <div class="form-group row">
+                        <div class="col-lg-12">
+                            @*MÜŞTERİ*@
+                            <div class="checkbox">
+                                <label>
+                                    @if (yetkiler.Contains("2"))
+                                    {
+                                        <input type="checkbox" value="2" id="2" onchange="yetkiGuncelle(2);" checked>
+                                        <span> Müşteri Listele</span>
+                                    }
+                                    else
+                                    {
+                                        <input type="checkbox" value="2" id="2" onchange="yetkiGuncelle(2);">
+                                        <span> Müşteri Listele</span>
+                                    }
+                                </label>
+                            </div>
+                            <div class="checkbox">
+                                <label>
+                                    @if (yetkiler.Contains("3"))
+                                    {
+                                        <input type="checkbox" value="3" id="3" onchange="yetkiGuncelle(3);" checked>
+                                        <span> Müşteri Ekle</span>
+                                    }
+                                    else
+                                    {
+                                        <input type="checkbox" value="3" id="3" onchange="yetkiGuncelle(3);">
+                                        <span> Müşteri Ekle</span>
+                                    }
+                                </label>
+                            </div>
+                            <div class="checkbox">
+                                <label>
+                                    @if (yetkiler.Contains("4"))
+                                    {
+                                        <input type="checkbox" value="4" id="4" onchange="yetkiGuncelle(4);" checked>
+                                        <span> Musteri Güncelle</span>
+                                    }
+                                    else
+                                    {
+                                        <input type="checkbox" value="4" id="4" onchange="yetkiGuncelle(4);">
+                                        <span>Musteri Güncelle </span>
+                                    }
+                                </label>
+                            </div>
+                            <div class="checkbox">
+                                <label>
+                                    @if (yetkiler.Contains("5"))
+                                    {
+                                        <input type="checkbox" value="5" id="5" onchange="yetkiGuncelle(5);" checked>
+                                        <span> Müşteri Pasifleştirme</span>
+                                    }
+                                    else
+                                    {
+                                        <input type="checkbox" value="5" id="5" onchange="yetkiGuncelle(5);">
+                                        <span> Müşteri Pasifleştirme</span>
+                                    }
+                                </label>
+                            </div>
+                            <div class="checkbox">
+                                <label>
+                                    @if (yetkiler.Contains("6"))
+                                    {
+                                        <input type="checkbox" value="6" id="6" onchange="yetkiGuncelle(6);" checked>
+                                        <span> Müşteri Aktifleştirme</span>
+                                    }
+                                    else
+                                    {
+                                        <input type="checkbox" value="6" id="6" onchange="yetkiGuncelle(6);">
+                                        <span> Müşteri Aktifleştirme</span>
+                                    }
+                                </label>
+                            </div>
+                            <div class="checkbox">
+                                <label>
+                                    @if (yetkiler.Contains("7"))
+                                    {
+                                        <input type="checkbox" value="7" id="7" onchange="yetkiGuncelle(7);" checked>
+                                        <span> Müşteri Pasif Listesi</span>
+                                    }
+                                    else
+                                    {
+                                        <input type="checkbox" value="7" id="7" onchange="yetkiGuncelle(7);">
+                                        <span> Müşteri Pasif Listesi</span>
+                                    }
+                                </label>
+                            </div>
+                            <div class="checkbox">
+                                <label>
+                                    @if (yetkiler.Contains("8"))
+                                    {
+                                        <input type="checkbox" value="8" id="8" onchange="yetkiGuncelle(8);" checked>
+                                        <span> Müşteri Adres Listesi</span>
+                                    }
+                                    else
+                                    {
+                                        <input type="checkbox" value="8" id="8" onchange="yetkiGuncelle(8);">
+                                        <span> Müşteri Adres Listesi</span>
+                                    }
+                                </label>
+                            </div>
+                            <div class="checkbox">
+                                <label>
+                                    @if (yetkiler.Contains("8"))
+                                    {
+                                        <input type="checkbox" value="8" id="8" onchange="yetkiGuncelle(8);" checked>
+                                        <span> Müşteri Adres Listesi</span>
+                                    }
+                                    else
+                                    {
+                                        <input type="checkbox" value="8" id="8" onchange="yetkiGuncelle(8);">
+                                        <span> Müşteri Adres Listesi</span>
+                                    }
+                                </label>
+                            </div>
+
+                            @*ADRES*@
+                            <div class="checkbox">
+                                <label>
+                                    @if (yetkiler.Contains("9"))
+                                    {
+                                        <input type="checkbox" value="9" id="9" onchange="yetkiGuncelle(9);" checked>
+                                        <span> Adres Ekle</span>
+                                    }
+                                    else
+                                    {
+                                        <input type="checkbox" value="9" id="9" onchange="yetkiGuncelle(9);">
+                                        <span> Adres Ekle</span>
+                                    }
+                                </label>
+                            </div>
+                            <div class="checkbox">
+                                <label>
+                                    @if (yetkiler.Contains("10"))
+                                    {
+                                        <input type="checkbox" value="10" id="10" onchange="yetkiGuncelle(10);" checked>
+                                        <span> Adres Güncelleştirme</span>
+                                    }
+                                    else
+                                    {
+                                        <input type="checkbox" value="10" id="10" onchange="yetkiGuncelle(10);">
+                                        <span>Adres Güncelleştirme</span>
+                                    }
+                                </label>
+                            </div>
+                            <div class="checkbox">
+                                <label>
+                                    @if (yetkiler.Contains("11"))
+                                    {
+                                        <input type="checkbox" value="11" id="11" onchange="yetkiGuncelle(11);" checked>
+                                        <span> Adres Passifleştirme</span>
+                                    }
+                                    else
+                                    {
+                                        <input type="checkbox" value="11" id="11" onchange="yetkiGuncelle(11);">
+                                        <span>Adres Passifleştirme</span>
+                                    }
+                                </label>
+                            </div>
+                            <div class="checkbox">
+                                <label>
+                                    @if (yetkiler.Contains("12"))
+                                    {
+                                        <input type="checkbox" value="12" id="12" onchange="yetkiGuncelle(12);" checked>
+                                        <span> Adres Aktifleştirme</span>
+                                    }
+                                    else
+                                    {
+                                        <input type="checkbox" value="12" id="12" onchange="yetkiGuncelle(12);">
+                                        <span> Adres Aktifleştirme</span>
+                                    }
+                                </label>
+                            </div>
+                            <div class="checkbox">
+                                <label>
+                                    @if (yetkiler.Contains("13"))
+                                    {
+                                        <input type="checkbox" value="13" id="13" onchange="yetkiGuncelle(13);" checked>
+                                        <span> Adres Pasif Listeleme</span>
+                                    }
+                                    else
+                                    {
+                                        <input type="checkbox" value="13" id="13" onchange="yetkiGuncelle(13);">
+                                        <span> Adres Pasif Listeleme</span>
+                                    }
+                                </label>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+
+        @*KATEGORİ KARTI*@
+        <div class="col">
+            <section class="card">
+                <header class="card-header">
+                    <div class="card-actions">
+                    </div>
+                    <h2 class="card-title"></h2>
+                </header>
+                <div class="card-body">
+                    <div class="form-group row">
+                        <div class="col-lg-12">
+                            @*Kategori*@
+                            <div class="checkbox">
+                                <label>
+                                    @if (yetkiler.Contains("14"))
+                                    {
+                                        <input type="checkbox" value="14" id="14" onchange="yetkiGuncelle(14);" checked>
+                                        <span> Kategori Listele</span>
+                                    }
+                                    else
+                                    {
+                                        <input type="checkbox" value="14" id="14" onchange="yetkiGuncelle(14);">
+                                        <span> Kategori Listele</span>
+                                    }
+                                </label>
+                            </div>
+                            <div class="checkbox">
+                                <label>
+                                    @if (yetkiler.Contains("15"))
+                                    {
+                                        <input type="checkbox" value="15" id="15" onchange="yetkiGuncelle(15);" checked>
+                                        <span> Kategori Ekle</span>
+                                    }
+                                    else
+                                    {
+                                        <input type="checkbox" value="15" id="15" onchange="yetkiGuncelle(15);">
+                                        <span> Kategori Ekle</span>
+                                    }
+                                </label>
+                            </div>
+                            <div class="checkbox">
+                                <label>
+                                    @if (yetkiler.Contains("16"))
+                                    {
+                                        <input type="checkbox" value="16" id="16" onchange="yetkiGuncelle(16);" checked>
+                                        <span> Kategori Güncelle</span>
+                                    }
+                                    else
+                                    {
+                                        <input type="checkbox" value="16" id="16" onchange="yetkiGuncelle(16);">
+                                        <span>Kategori Güncelle </span>
+                                    }
+                                </label>
+                            </div>
+                            <div class="checkbox">
+                                <label>
+                                    @if (yetkiler.Contains("17"))
+                                    {
+                                        <input type="checkbox" value="17" id="17" onchange="yetkiGuncelle(17);" checked>
+                                        <span> Kategori Pasifleştirme</span>
+                                    }
+                                    else
+                                    {
+                                        <input type="checkbox" value="17" id="17" onchange="yetkiGuncelle(17);">
+                                        <span> Kategori Pasifleştirme</span>
+                                    }
+                                </label>
+                            </div>
+                            <div class="checkbox">
+                                <label>
+                                    @if (yetkiler.Contains("18"))
+                                    {
+                                        <input type="checkbox" value="18" id="18" onchange="yetkiGuncelle(18);" checked>
+                                        <span> Kategori Aktifleştirme</span>
+                                    }
+                                    else
+                                    {
+                                        <input type="checkbox" value="18" id="18" onchange="yetkiGuncelle(18);">
+                                        <span> Kategori Aktifleştirme</span>
+                                    }
+                                </label>
+                            </div>
+                            <div class="checkbox">
+                                <label>
+                                    @if (yetkiler.Contains("19"))
+                                    {
+                                        <input type="checkbox" value="19" id="19" onchange="yetkiGuncelle(19);" checked>
+                                        <span> Kategori Pasif Listesi</span>
+                                    }
+                                    else
+                                    {
+                                        <input type="checkbox" value="19" id="19" onchange="yetkiGuncelle(19);">
+                                        <span> Kategori Pasif Listesi</span>
+                                    }
+                                </label>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+
+        @*ÜRÜN KARTI*@
+        <div class="col">
+            <section class="card">
+                <header class="card-header">
+                    <div class="card-actions">
+                    </div>
+                    <h2 class="card-title"></h2>
+                </header>
+                <div class="card-body">
+                    <div class="form-group row">
+                        <div class="col-lg-12">
+                            @*ÜRÜN*@
+                            <div class="checkbox">
+                                <label>
+                                    @if (yetkiler.Contains("20"))
+                                    {
+                                        <input type="checkbox" value="20" id="20" onchange="yetkiGuncelle(20);" checked>
+                                        <span> Ürün Listele</span>
+                                    }
+                                    else
+                                    {
+                                        <input type="checkbox" value="20" id="20" onchange="yetkiGuncelle(20);">
+                                        <span> Ürün Listele</span>
+                                    }
+                                </label>
+                            </div>
+                            <div class="checkbox">
+                                <label>
+                                    @if (yetkiler.Contains("21"))
+                                    {
+                                        <input type="checkbox" value="21" id="21" onchange="yetkiGuncelle(21);" checked>
+                                        <span> Ürün Ekle</span>
+                                    }
+                                    else
+                                    {
+                                        <input type="checkbox" value="21" id="21" onchange="yetkiGuncelle(21);">
+                                        <span> Ürün Ekle</span>
+                                    }
+                                </label>
+                            </div>
+                            <div class="checkbox">
+                                <label>
+                                    @if (yetkiler.Contains("22"))
+                                    {
+                                        <input type="checkbox" value="22" id="22" onchange="yetkiGuncelle(22);" checked>
+                                        <span> Ürün Güncelle</span>
+                                    }
+                                    else
+                                    {
+                                        <input type="checkbox" value="22" id="22" onchange="yetkiGuncelle(22);">
+                                        <span>Ürün Güncelle </span>
+                                    }
+                                </label>
+                            </div>
+                            <div class="checkbox">
+                                <label>
+                                    @if (yetkiler.Contains("23"))
+                                    {
+                                        <input type="checkbox" value="23" id="23" onchange="yetkiGuncelle(23);" checked>
+                                        <span> Ürün Pasifleştirme</span>
+                                    }
+                                    else
+                                    {
+                                        <input type="checkbox" value="23" id="23" onchange="yetkiGuncelle(23);">
+                                        <span> Ürün Pasifleştirme</span>
+                                    }
+                                </label>
+                            </div>
+                            <div class="checkbox">
+                                <label>
+                                    @if (yetkiler.Contains("24"))
+                                    {
+                                        <input type="checkbox" value="24" id="24" onchange="yetkiGuncelle(24);" checked>
+                                        <span> Ürün Aktifleştirme</span>
+                                    }
+                                    else
+                                    {
+                                        <input type="checkbox" value="24" id="24" onchange="yetkiGuncelle(24);">
+                                        <span> Ürün Aktifleştirme</span>
+                                    }
+                                </label>
+                            </div>
+                            <div class="checkbox">
+                                <label>
+                                    @if (yetkiler.Contains("25"))
+                                    {
+                                        <input type="checkbox" value="25" id="25" onchange="yetkiGuncelle(25);" checked>
+                                        <span> Ürün Pasif Listesi</span>
+                                    }
+                                    else
+                                    {
+                                        <input type="checkbox" value="25" id="25" onchange="yetkiGuncelle(25);">
+                                        <span> Ürün Pasif Listesi</span>
+                                    }
+                                </label>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+
+        @*ÜRÜN YORUM KARTI*@
+        <div class="col">
+            <section class="card">
+                <header class="card-header">
+                    <div class="card-actions">
+                    </div>
+                    <h2 class="card-title"></h2>
+                </header>
+                <div class="card-body">
+                    <div class="form-group row">
+                        <div class="col-lg-12">
+                            @*ÜRÜN YORUM İÇİN*@
+                            <div class="checkbox">
+                                <label>
+                                    @if (yetkiler.Contains("47"))
+                                    {
+                                        <input type="checkbox" value="47" id="47" onchange="yetkiGuncelle(47);" checked>
+                                        <span> Yorum Listele</span>
+                                    }
+                                    else
+                                    {
+                                        <input type="checkbox" value="47" id="47" onchange="yetkiGuncelle(47);">
+                                        <span> Yorum Listele</span>
+                                    }
+                                </label>
+                            </div>
+                            <div class="checkbox">
+                                <label>
+                                    @if (yetkiler.Contains("50"))
+                                    {
+                                        <input type="checkbox" value="50" id="50" onchange="yetkiGuncelle(50);" checked>
+                                        <span> Yorum Pasifleştirme</span>
+                                    }
+                                    else
+                                    {
+                                        <input type="checkbox" value="50" id="50" onchange="yetkiGuncelle(50);">
+                                        <span> Yorum Pasifleştirme</span>
+                                    }
+                                </label>
+                            </div>
+                            <div class="checkbox">
+                                <label>
+                                    @if (yetkiler.Contains("51"))
+                                    {
+                                        <input type="checkbox" value="51" id="51" onchange="yetkiGuncelle(51);" checked>
+                                        <span> Yorum Aktifleştirme</span>
+                                    }
+                                    else
+                                    {
+                                        <input type="checkbox" value="51" id="51" onchange="yetkiGuncelle(51);">
+                                        <span> Yorum Aktifleştirme</span>
+                                    }
+                                </label>
+                            </div>
+                            <div class="checkbox">
+                                <label>
+                                    @if (yetkiler.Contains("52"))
+                                    {
+                                        <input type="checkbox" value="52" id="52" onchange="yetkiGuncelle(52);" checked>
+                                        <span> Yorum Pasif Listesi</span>
+                                    }
+                                    else
+                                    {
+                                        <input type="checkbox" value="52" id="52" onchange="yetkiGuncelle(52);">
+                                        <span> Yorum Pasif Listesi</span>
+                                    }
+                                </label>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+
+        @*ÜRÜN SATIŞ KARTI*@
+        <div class="col">
+            <section class="card">
+                <header class="card-header">
+                    <div class="card-actions">
+                    </div>
+                    <h2 class="card-title"></h2>
+                </header>
+                <div class="card-body">
+                    <div class="form-group row">
+                        <div class="col-lg-12">
+                            @*ÜRÜN SATIŞ*@
+                            <div class="checkbox">
+                                <label>
+                                    @if (yetkiler.Contains("26"))
+                                    {
+                                        <input type="checkbox" value="26" id="26" onchange="yetkiGuncelle(26);" checked>
+                                        <span> Ürün Satış Listele</span>
+                                    }
+                                    else
+                                    {
+                                        <input type="checkbox" value="26" id="26" onchange="yetkiGuncelle(26);">
+                                        <span> Ürün Satış Listele</span>
+                                    }
+                                </label>
+                            </div>
+                            <div class="checkbox">
+                                <label>
+                                    @if (yetkiler.Contains("27"))
+                                    {
+                                        <input type="checkbox" value="27" id="27" onchange="yetkiGuncelle(27);" checked>
+                                        <span> Ürün Satış Ekle</span>
+                                    }
+                                    else
+                                    {
+                                        <input type="checkbox" value="27" id="27" onchange="yetkiGuncelle(27);">
+                                        <span> Ürün Satış Ekle</span>
+                                    }
+                                </label>
+                            </div>
+                            <div class="checkbox">
+                                <label>
+                                    @if (yetkiler.Contains("28"))
+                                    {
+                                        <input type="checkbox" value="28" id="28" onchange="yetkiGuncelle(28);" checked>
+                                        <span> Ürün Satış Güncelle</span>
+                                    }
+                                    else
+                                    {
+                                        <input type="checkbox" value="28" id="28" onchange="yetkiGuncelle(28);">
+                                        <span>Ürün Satış Güncelle </span>
+                                    }
+                                </label>
+                            </div>
+                            <div class="checkbox">
+                                <label>
+                                    @if (yetkiler.Contains("29"))
+                                    {
+                                        <input type="checkbox" value="29" id="29" onchange="yetkiGuncelle(29);" checked>
+                                        <span> Ürün Satış Pasifleştirme</span>
+                                    }
+                                    else
+                                    {
+                                        <input type="checkbox" value="29" id="29" onchange="yetkiGuncelle(29);">
+                                        <span> Ürün Satış Pasifleştirme</span>
+                                    }
+                                </label>
+                            </div>
+                            <div class="checkbox">
+                                <label>
+                                    @if (yetkiler.Contains("30"))
+                                    {
+                                        <input type="checkbox" value="30" id="30" onchange="yetkiGuncelle(30);" checked>
+                                        <span> Ürün Satış Aktifleştirme</span>
+                                    }
+                                    else
+                                    {
+                                        <input type="checkbox" value="30" id="30" onchange="yetkiGuncelle(30);">
+                                        <span> Ürün Satış Aktifleştirme</span>
+                                    }
+                                </label>
+                            </div>
+                            <div class="checkbox">
+                                <label>
+                                    @if (yetkiler.Contains("31"))
+                                    {
+                                        <input type="checkbox" value="31" id="31" onchange="yetkiGuncelle(31);" checked>
+                                        <span> Ürün Satış Pasif Listesi</span>
+                                    }
+                                    else
+                                    {
+                                        <input type="checkbox" value="31" id="31" onchange="yetkiGuncelle(31);">
+                                        <span> Ürün Satış Pasif Listesi</span>
+                                    }
+                                </label>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+
+        @*SİPARİŞ KARTI*@
+        <div class="col">
+            <section class="card">
+                <header class="card-header">
+                    <div class="card-actions">
+                    </div>
+                    <h2 class="card-title"></h2>
+                </header>
+                <div class="card-body">
+                    <div class="form-group row">
+                        <div class="col-lg-12">
+                            @*SİPARİŞ*@
+                            <div class="checkbox">
+                                <label>
+                                    @if (yetkiler.Contains("32"))
+                                    {
+                                        <input type="checkbox" value="32" id="32" onchange="yetkiGuncelle(32);" checked>
+                                        <span> Sipariş Listele</span>
+                                    }
+                                    else
+                                    {
+                                        <input type="checkbox" value="32" id="32" onchange="yetkiGuncelle(32);">
+                                        <span> Sipariş Listele</span>
+                                    }
+                                </label>
+
+                                <div class="checkbox">
+                                    <label>
+                                        @if (yetkiler.Contains("34"))
+                                        {
+                                            <input type="checkbox" value="34" id="34" onchange="yetkiGuncelle(34);" checked>
+                                            <span> Sipariş Güncelle</span>
+                                        }
+                                        else
+                                        {
+                                            <input type="checkbox" value="34" id="34" onchange="yetkiGuncelle(34);">
+                                            <span>Sipariş Güncelle </span>
+                                        }
+                                    </label>
+                                </div>
+
+                                <div class="checkbox">
+                                    <label>
+                                        @if (yetkiler.Contains("53"))
+                                        {
+                                            <input type="checkbox" value="53" id="53" onchange="yetkiGuncelle(53);" checked>
+                                            <span> Sipariş Pasifleştir</span>
+                                        }
+                                        else
+                                        {
+                                            <input type="checkbox" value="53" id="53" onchange="yetkiGuncelle(53);">
+                                            <span>Sipariş Pasifleştir </span>
+                                        }
+                                    </label>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+            </section>
+
+        </div>
+
+        @*HAKKIMIZDA KARTI*@
+        <div class="col">
+            <section class="card">
+                <header class="card-header">
+                    <div class="card-actions">
+                    </div>
+                    <h2 class="card-title"></h2>
+                </header>
+                <div class="card-body">
+                    <div class="form-group row">
+                        <div class="col-lg-12">
+                            @*HAKKIMIZDA*@
+                            <div class="checkbox">
+                                <label>
+                                    @if (yetkiler.Contains("35"))
+                                    {
+                                        <input type="checkbox" value="35" id="35" onchange="yetkiGuncelle(35);" checked>
+                                        <span> Hakkımızda Listele</span>
+                                    }
+                                    else
+                                    {
+                                        <input type="checkbox" value="35" id="35" onchange="yetkiGuncelle(35);">
+                                        <span> Hakkımızda Listele</span>
+                                    }
+                                </label>
+                            </div>
+                            <div class="checkbox">
+                                <label>
+                                    @if (yetkiler.Contains("36"))
+                                    {
+                                        <input type="checkbox" value="36" id="36" onchange="yetkiGuncelle(36);" checked>
+                                        <span> Hakkımızda Ekle</span>
+                                    }
+                                    else
+                                    {
+                                        <input type="checkbox" value="36" id="36" onchange="yetkiGuncelle(36);">
+                                        <span> Hakkımızda Ekle</span>
+                                    }
+                                </label>
+                            </div>
+                            <div class="checkbox">
+                                <label>
+                                    @if (yetkiler.Contains("37"))
+                                    {
+                                        <input type="checkbox" value="37" id="37" onchange="yetkiGuncelle(37)" checked>
+                                        <span> Hakkımızda Güncelle</span>
+                                    }
+                                    else
+                                    {
+                                        <input type="checkbox" value="37" id="37" onchange="yetkiGuncelle(37);">
+                                        <span>Hakkımızda Güncelle </span>
+                                    }
+                                </label>
+                            </div>
+                            <div class="checkbox">
+                                <label>
+                                    @if (yetkiler.Contains("38"))
+                                    {
+                                        <input type="checkbox" value="38" id="38" onchange="yetkiGuncelle(38);" checked>
+                                        <span> Hakkımızda Pasifleştirme</span>
+                                    }
+                                    else
+                                    {
+                                        <input type="checkbox" value="38" id="38" onchange="yetkiGuncelle(38);">
+                                        <span> Ürün Satış Pasifleştirme</span>
+                                    }
+                                </label>
+                            </div>
+                            <div class="checkbox">
+                                <label>
+                                    @if (yetkiler.Contains("39"))
+                                    {
+                                        <input type="checkbox" value="39" id="39" onchange="yetkiGuncelle(39);" checked>
+                                        <span> Ürün Satış Aktifleştirme</span>
+                                    }
+                                    else
+                                    {
+                                        <input type="checkbox" value="39" id="39" onchange="yetkiGuncelle(39);">
+                                        <span> Ürün Satış Aktifleştirme</span>
+                                    }
+                                </label>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+
+        @*İLETİŞİM KARTI*@
+        <div class="col">
+            <section class="card">
+                <header class="card-header">
+                    <div class="card-actions">
+                    </div>
+                    <h2 class="card-title"></h2>
+                </header>
+                <div class="card-body">
+                    <div class="form-group row">
+                        <div class="col-lg-12">
+                            @*İLETİŞİM*@
+                            <div class="checkbox">
+                                <label>
+                                    @if (yetkiler.Contains("40"))
+                                    {
+                                        <input type="checkbox" value="40" id="40" onchange="yetkiGuncelle(40);" checked>
+                                        <span> İletişim Listele</span>
+                                    }
+                                    else
+                                    {
+                                        <input type="checkbox" value="40" id="40" onchange="yetkiGuncelle(40);">
+                                        <span> İletişim Listele</span>
+                                    }
+                                </label>
+                            </div>
+                            <div class="checkbox">
+                                <label>
+                                    @if (yetkiler.Contains("41"))
+                                    {
+                                        <input type="checkbox" value="41" id="41" onchange="yetkiGuncelle(41);" checked>
+                                        <span> İletişim Ekle</span>
+                                    }
+                                    else
+                                    {
+                                        <input type="checkbox" value="41" id="41" onchange="yetkiGuncelle(41);">
+                                        <span> İletişim Ekle</span>
+                                    }
+                                </label>
+                            </div>
+                            <div class="checkbox">
+                                <label>
+                                    @if (yetkiler.Contains("42"))
+                                    {
+                                        <input type="checkbox" value="42" id="42" onchange="yetkiGuncelle(42);" checked>
+                                        <span> İletişim Güncelle</span>
+                                    }
+                                    else
+                                    {
+                                        <input type="checkbox" value="42" id="42" onchange="yetkiGuncelle(42);">
+                                        <span>İletişim Güncelle </span>
+                                    }
+                                </label>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+
+        @*KARGO KARTI*@
+        <div class="col">
+            <section class="card">
+                <header class="card-header">
+                    <div class="card-actions">
+                    </div>
+                    <h2 class="card-title"></h2>
+                </header>
+                <div class="card-body">
+                    <div class="form-group row">
+                        <div class="col-lg-12">
+                            @*KARGO*@
+                            <div class="checkbox">
+                                <label>
+                                    @if (yetkiler.Contains("43"))
+                                    {
+                                        <input type="checkbox" value="43" id="43" onchange="yetkiGuncelle(43);" checked>
+                                        <span> Kargo Listele</span>
+                                    }
+                                    else
+                                    {
+                                        <input type="checkbox" value="43" id="43" onchange="yetkiGuncelle(43);">
+                                        <span> Kargo Listele</span>
+                                    }
+                                </label>
+                            </div>
+                            <div class="checkbox">
+                                <label>
+                                    @if (yetkiler.Contains("44"))
+                                    {
+                                        <input type="checkbox" value="44" id="44" onchange="yetkiGuncelle(44);" checked>
+                                        <span> Kargo Ekle</span>
+                                    }
+                                    else
+                                    {
+                                        <input type="checkbox" value="44" id="44" onchange="yetkiGuncelle(44);">
+                                        <span> Kargo Ekle</span>
+                                    }
+                                </label>
+                            </div>
+                            <div class="checkbox">
+                                <label>
+                                    @if (yetkiler.Contains("45"))
+                                    {
+                                        <input type="checkbox" value="45" id="45" onchange="yetkiGuncelle(45);" checked>
+                                        <span> Kargo Güncelle</span>
+                                    }
+                                    else
+                                    {
+                                        <input type="checkbox" value="45" id="45" onchange="yetkiGuncelle(45);">
+                                        <span>Kargo Güncelle </span>
+                                    }
+                                </label>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+
+        @*MAIL KARTI*@
+        <div class="col">
+            <section class="card">
+                <header class="card-header">
+                    <div class="card-actions">
+                    </div>
+                    <h2 class="card-title"></h2>
+                </header>
+                <div class="card-body">
+                    <div class="form-group row">
+                        <div class="col-lg-12">
+                            @*MAIL*@
+                            <div class="checkbox">
+                                <label>
+                                    @if (yetkiler.Contains("54"))
+                                    {
+                                        <input type="checkbox" value="54" id="54" onchange="yetkiGuncelle(54);" checked>
+                                        <span> Mail İzni Ver</span>
+                                    }
+                                    else
+                                    {
+                                        <input type="checkbox" value="54" id="54" onchange="yetkiGuncelle(54);">
+                                        <span>Mail İzni Ver</span>
+                                    }
+                                </label>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+
+        @*YETKİ VERME KARTI*@
+        <div class="col">
+            <section class="card">
+                <header class="card-header">
+                    <div class="card-actions">
+                    </div>
+                    <h2 class="card-title"></h2>
+                </header>
+                <div class="card-body">
+                    <div class="form-group row">
+                        <div class="col-lg-12">
+                            @*YETKİ*@
+                            <div class="checkbox">
+                                <label>
+                                    @if (yetkiler.Contains("46"))
+                                    {
+                                        <input type="checkbox" value="46" id="46" onchange="yetkiGuncelle(46);" checked>
+                                        <span> Yetki İzni Ver</span>
+                                    }
+                                    else
+                                    {
+                                        <input type="checkbox" value="46" id="46" onchange="yetkiGuncelle(46);">
+                                        <span>Yetki İzni Ver</span>
+                                    }
+                                </label>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+
+    </div>
+    }
+    }
+    </section>
+
+    @section scripts
+{
+
+        <script type="text/javascript">
+            function yetkiGuncelle(categoryId) {
+                var isChecked = document.getElementById(categoryId).checked;
+                var kullanici = document.getElementById("KULLANICI").value;
+                var flag = 0;
+                if (isChecked)
+                    flag = 1;
+                if (categoryId > 0) {
+                    $.ajax({
+                        url: "/YetkiAdmin/YetkiGuncelle/",
+                        type: "POST",
+                        dataType: 'json',
+                        data: { 'usrId': kullanici, 'categoryId': categoryId, 'flag': flag },
+                        success: function (data) {
+                            if (data.sonuc) {
+                                if (flag == 1) {
+                                    alert('Yetki Verildi.')
+                                }
+                                else {
+                                    alert('Yetki Kaldırıldı.')
+                                }
+                            }
+                            else {
+                                alert('Yetki Güncelleme Yetkiniz Bulunmamaktadır. Lütfen Sistem Yöneticinizle iletişime geçiniz.')
+                                window.location.href = "/Home/Index"
+                            }
+                        },
+                        error: function (XMLHttpRequest, textStatus, errorThrown) {
+                            alert(errorThrown);
+                        }
+                    });
+                }
+            }
+        </script>
+
+
+    }
+
+

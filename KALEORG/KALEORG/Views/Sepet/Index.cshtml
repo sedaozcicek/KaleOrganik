@@ -1,0 +1,242 @@
+﻿@model List<KALEORG.Models.T_URUN_SEPET>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!-- Subheader Start -->
+<div class="andro_subheader pattern-bg primary-bg">
+    <div class="container">
+        <div class="andro_subheader-inner">
+            <h1>SEPETİM</h1>
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="/Home/Index/">Anasayfa</a></li>
+                    <li class="breadcrumb-item"><a href="/Sepet/Index/">Sepetim</a></li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+</div>
+<!-- Subheader End -->
+<!--Cart Start -->
+<div class="section">
+    <div class="container">
+
+        <!-- Cart Table Start -->
+        <table class="andro_responsive-table">
+            <thead>
+                <tr>
+                    <th class="remove-item"></th>
+                    <th>Ürün</th>
+                    <th>Fiyat</th>
+                    <th>Miktar</th>
+                    <th>Toplam</th>
+                </tr>
+            </thead>
+            <tbody>
+                @if (Model != null)
+                {
+                    foreach (var i in Model)
+                    {
+                        <tr>
+                            <td class="remove">
+
+                                <a href="/Sepet/UrunSil/@i.URUN_ID" class="btn btn-danger btn-sm"><i class="fa fa-trash fa-fw"></i>Sil</a>
+                            </td>
+                            <td data-title="Product">
+                                <div class="andro_cart-product-wrapper">
+                                    <img src="~/img/urun/@i.FOTO" alt="Resim">
+                                    <div class="andro_cart-product-body">
+                                        <h6> <a href="/UrunDetay/Index/@i.URUN_ID">@i.URUN_ADI</a> </h6>
+                                    </div>
+                                </div>
+                            </td>
+                            <td > <strong><label value="@i.URUN_FIYAT" id="fiyat-@i.URUN_ID">@i.URUN_FIYAT</label>  </strong> </td>
+
+                            <td class="quantity" data-title="Quantity">
+                                @Html.DropDownList("miktar-"+i.URUN_ID, new SelectList(ViewBag.UrunKg, "value", "text"),i.MIKTAR.ToString(), new { @class = "form-control", @required = "required", @onchange = "jsFunction(" + i.URUN_ID + "," + i.URUN_FIYAT.ToString() + ")" })
+
+                            </td>
+                            <td data-title="Total"><input type="text" id="tutar-@i.URUN_ID" value="@(i.URUN_FIYAT*i.MIKTAR)"> </td>
+
+                        </tr>
+
+                    }
+                }
+            </tbody>
+        </table>
+        <!-- Cart Table End -->
+
+
+    </div>
+</div>
+<!-- Cart End -->
+<!-- Cart form Start -->
+<div class="section pt-0">
+    <div class="container">
+
+        <div class="row andro_cart-form">
+            <div class="col-lg-6 andro_upsells">
+
+                <div class="section-title flex-title">
+                    <h4 class="title">En Sık Aranan Ürünler</h4>
+                    <div class="andro_arrows">
+                        <i class="fa fa-arrow-left slick-arrow slider-prev"></i>
+                        <i class="fa fa-arrow-right slick-arrow slider-next"></i>
+                    </div>
+                </div>
+
+                <!-- Upsells Start -->
+                <div class="andro_upsells-slider">
+                    <!-- Product Start -->
+                    @if (Model != null)
+                    {
+                        foreach (var i in ViewBag.randomUrunList)
+                        {
+                            <div class="andro_product andro_product-list andro_product-has-controls andro_product-has-buttons">
+                                <div class="andro_product-thumb">
+                                    <a href="product-single.html"><img src="~/img/urun/@i.FOTO" alt="product"></a>
+                                </div>
+                                <div class="andro_product-body">
+                                    <div class="andro_rating-wrapper">
+                                        <div class="andro_rating">
+                                            <i class="fa fa-star active"></i>
+                                            <i class="fa fa-star active"></i>
+                                            <i class="fa fa-star active"></i>
+                                            <i class="fa fa-star active"></i>
+                                            <i class="fa fa-star active"></i>
+                                        </div>
+                                        <span>5 Stars</span>
+                                    </div>
+                                    <h5 class="andro_product-title"> <a href="product-single.html"> @i.URUN_ADI </a> </h5>
+                                    <div class="andro_product-price">
+                                        <span>@i.URUN_FIYAT</span>
+                                        <span>@(Convert.ToDouble(i.URUN_FIYAT) * 1.10)₺</span>
+                                    </div>
+                                    <p>@i.ACIKLAMA</p>
+                                </div>
+                                <div class="andro_product-footer">
+                                    <div class="andro_product-buttons">
+                                        <a href="/SiteBase/SepeteEkle/@i.URUN_ID" class="andro_btn-custom primary">Sepete Ekle</a>
+                                        <a href="/UrunDetay/Index/@i.URUN_ID" class="andro_btn-custom light">Ürünü İncele</a>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    }
+
+                    <!-- Product End -->
+
+
+                </div>
+                <!-- Upsells End -->
+
+            </div>
+            <div class="col-lg-6">
+
+
+                <div class="section-title">
+                    <h4 class="title">Sipariş Özeti</h4>
+                </div>
+
+                <table>
+                    <tbody>
+                        <tr>
+                            <th>Ürün Toplamı Fiyat</th>
+
+                            <td data-title="Total">
+                                <input id="genelToplam" value="@(ViewBag.genelToplam != null ? ViewBag.genelToplam : "0,00"  )" />
+                            </td>
+
+
+
+
+                            @*<td value=" @ViewBag.genelToplam">@ViewBag.genelToplam</td>*@
+
+                        </tr>
+                        <tr>
+                            <th>Kargo Ücreti</th>
+                            <td>
+                                <input id="Kargo" value="@(ViewBag.Kargo != null ? ViewBag.Kargo : "0,00"  )" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>Toplam Tutar</th>
+                            <td> <input id="Toplam"  value="@(ViewBag.Kargo != null ? ViewBag.Kargo+ViewBag.genelToplam : "0,00")" /> </td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <a href="/Siparis/Index" class="andro_btn-custom primary btn-block">Ödeme İşlemi</a>
+
+            </div>
+        </div>
+
+    </div>
+</div>
+
+@*<script type="text/javascript">
+        function fiyatDegistir() {
+            alert("Hello");
+            var urunmiktar = document.getElementById(miktar - URUN_ID).value;
+            alert(urunmiktar);
+            document.getElementById(tutar - URUN_ID).value = URUN_FIYAT * miktar;
+            if (YK_CEVRE_FAALIYET_ID > 0) {
+                $.ajax({
+                    url: "/YKCevreFaaliyetTkm/AyDurumGuncelle/",
+                    type: "POST",
+                    dataType: 'json',
+                    data: { 'YK_CEVRE_FAALIYET_ID': YK_CEVRE_FAALIYET_ID, 'AY_ID': AY_ID, 'flag': flag },
+                    success: function (data) {
+                        if (data.sonuc) {
+                            if (flag == 1) {
+                                alert('Ay Durumu Seçili Olarak Değiştirildi.')
+                            }
+                            else {
+                                alert('Ay Durumu Kaldırıldı.')
+                            }
+                        }
+                    },
+                    error: function (XMLHttpRequest, textStatus, errorThrown) {
+                        alert(errorThrown);
+                    }
+                }),
+            }
+        }
+    </script>*@
+
+@section scripts
+{
+
+
+    <script type="text/javascript">
+        function jsFunction(urunid, fiyat, deger) {
+            var urunmiktar =document.getElementById('miktar-' + urunid).value;
+            var urunfiyat = parseFloat(document.getElementById('fiyat-' + urunid).innerText);
+           
+           
+            document.getElementById('tutar-' + urunid).value = parseFloat(urunfiyat) * parseFloat(urunmiktar);
+
+            if (urunid > 0) {
+                $.ajax({
+                    url: "/Sepet/SepetDurumGuncelle/",
+                    type: "POST",
+                    dataType: 'json',
+                    data: { 'urunid': urunid, 'urunmiktar': urunmiktar },
+                    success: function (result) {
+                        if (result > 0) {
+                            document.getElementById('genelToplam').value = result;
+                            document.getElementById('Kargo').value = (result * 10) / 100;
+                            document.getElementById('Toplam').value = ((result * 10) / 100) + result;
+                        }
+                    },
+                    error: function (XMLHttpRequest, textStatus, errorThrown) {
+                        alert(errorThrown);
+                    }
+                })
+            }
+        }
+    </script>
+}
+

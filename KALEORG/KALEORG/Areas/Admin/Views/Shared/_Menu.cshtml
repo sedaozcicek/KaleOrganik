@@ -1,0 +1,382 @@
+﻿
+
+<aside id="sidebar-left" class="sidebar-left">
+
+    <div class="sidebar-header">
+        <div class="sidebar-title">
+            Menü
+        </div>
+        <div class="sidebar-toggle d-none d-md-block" data-toggle-class="sidebar-left-collapsed" data-target="html" data-fire-event="sidebar-left-toggle">
+            <i class="fas fa-bars" aria-label="Toggle sidebar"></i>
+        </div>
+    </div>
+
+    <div class="nano">
+        <div class="nano-content">
+            <nav id="menu" class="nav-main" role="navigation">
+
+
+                <ul class="nav nav-main">
+
+                    <li>
+                        <a class="nav-link" href="/Home/Index">
+                            <i class="fas fa-home" aria-hidden="true"></i>
+                            <span>ANASAYFA</span>
+                        </a>
+                    </li>
+
+                    @{
+                        List<KALEORG.Models.KULLANICI_KATEGORI> yetki = (List<KALEORG.Models.KULLANICI_KATEGORI>)Session["Yetki"];
+                        List<string> yetkiler = new List<string>();
+                        foreach (var i in yetki)
+                        {
+                            yetkiler.Add(i.KATEGORI.ToString());
+                        }
+
+                        @*MÜŞTERİ VE ADRESİ LİNKİ İÇİN*@
+                        if (yetkiler.Contains("2"))
+                        {
+                            <li class="nav-parent">
+                                <a class="nav-link" href="#">
+                                    <i class="fa fa-users" aria-hidden="true"></i>
+                                    <span>MÜŞTERİ</span>
+                                </a>
+
+
+                                <ul class="nav nav-children">
+
+                                    <li class="nav-parent">
+                                        <a class="nav-link" href="#">
+                                            Müşteri İşlemleri <span class="mega-sub-nav-toggle toggled float-right" data-toggle="collapse" data-target=".mega-sub-nav-sub-menu-1"></span>
+                                        </a>
+
+                                        <ul class="nav nav-children">
+
+                                            <li>
+                                                <a class="nav-link" href="/Admin/MusteriAdmin/Index">
+                                                    Müşteri Listesi
+                                                </a>
+                                            </li>
+                                            @if (yetkiler.Contains("3"))
+                                            {
+                                                <li>
+                                                    <a class="nav-link" href="/Admin/MusteriAdmin/MusteriForm">
+                                                        Müşteri Ekle
+                                                    </a>
+                                                </li>
+                                            }
+                                        </ul>
+
+                                    </li>
+
+                                </ul>
+
+                            </li>
+                        }
+
+                        //KATEGORİ İÇİN
+                        if (yetkiler.Contains("14"))
+                        {
+                            <li class="nav-parent">
+                                <a class="nav-link" href="#">
+                                    <i class="fa fa-bars" aria-hidden="true"></i>
+                                    <span>KATEGORİ İŞLEMLERİ</span>
+                                </a>
+                                <ul class="nav nav-children">
+
+                                    <li>
+                                        <a class="nav-link" href="/Admin/KategoriAdmin/Index">
+                                            Kategori Listele
+                                        </a>
+                                    </li>
+
+                                    @if (yetkiler.Contains("15"))
+                                    {
+                                        <li>
+                                            <a class="nav-link" href="/Admin/KategoriAdmin/KategoriForm">
+                                                Kategori Ekle
+                                            </a>
+                                        </li>
+                                    }
+                                </ul>
+                            </li>
+
+                        }
+
+                        @*ÜRÜN İÇİN*@
+                        if (yetkiler.Contains("20"))
+                        {
+                            <li class="nav-parent">
+                                <a class="nav-link" href="#">
+                                    <i class="fa fa-balance-scale" aria-hidden="true"></i>
+                                    <span>ÜRÜN  İŞLEMLERİ</span>
+                                </a>
+
+                                <ul class="nav nav-children">
+                                    <li>
+                                        <a class="nav-link" href="/Admin/UrunAdmin/Index">
+                                            ÜRÜN LİSTESİ
+                                        </a>
+                                    </li>
+                                    @if (yetkiler.Contains("21"))
+                                    {
+                                        <li>
+                                            <a class="nav-link" href="/Admin/UrunAdmin/UrunForm">
+                                                ÜRÜN EKLE
+                                            </a>
+                                        </li>
+                                    }
+                                </ul>
+                            </li>
+
+                        }
+
+                        //URUNFOTO İÇİN
+                        if (yetkiler.Contains("55"))
+                        {
+                            <li class="nav-parent">
+                                <a class="nav-link" href="#">
+                                    <i class="fa fa-camera" aria-hidden="true"></i>
+                                    <span>URUN FOTO İŞLEMLERİ</span>
+                                </a>
+                                <ul class="nav nav-children">
+
+                                    <li>
+                                        <a class="nav-link" href="/Admin/UrunFoto/Index">
+                                            URUN FOTO Listele
+                                        </a>
+                                    </li>
+
+                                    @if (yetkiler.Contains("56"))
+                                    {
+                                    <li>
+                                        <a class="nav-link" href="/Admin/UrunFoto/UrunFotoForm">
+                                            URUN FOTO Ekle
+                                        </a>
+                                    </li>
+                                    }
+                                </ul>
+                            </li>
+                        }
+
+
+                        //ÜRÜN YORUM İÇİN
+                        if (yetkiler.Contains("47"))
+                        {
+                            <li class="nav-parent">
+                                <a class="nav-link" href="#">
+                                    <i class="fa fa-comments" aria-hidden="true"></i>
+                                    <span>ÜRÜN YORUM İŞLEMLERİ</span>
+                                </a>
+                                <ul class="nav nav-children">
+
+                                    <li>
+                                        <a class="nav-link" href="/Admin/YorumAdmin/Index">
+                                            Ürün Yorum Listele
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+
+                        }
+
+                        //MAIL İÇİN
+                        if (yetkiler.Contains("54"))
+                        {
+                            <li class="nav-parent">
+                                <a class="nav-link" href="#">
+                                    <i class="fa fa-envelope" aria-hidden="true"></i>
+                                    <span>MAİL İŞLEMLERİ</span>
+                                </a>
+                                <ul class="nav nav-children">
+
+                                    <li>
+                                        <a class="nav-link" href="/Admin/MailAdmin/Index">
+                                            Mail Listele
+                                        </a>
+                                    </li>
+
+                                </ul>
+                            </li>
+
+                        }
+
+
+                        @*ÜRÜN SATIŞ İÇİN*@
+                        if (yetkiler.Contains("26"))
+                        {
+                            <li class="nav-parent">
+                                <a class="nav-link" href="#">
+                                    <i class="fa fa-cart-arrow-down" aria-hidden="true"></i>
+                                    <span>ÜRÜN & SATIŞ İŞLEMLERİ</span>
+                                </a>
+
+                                <ul class="nav nav-children">
+                                    <li>
+                                        <a class="nav-link" href="/Admin/UrunSatisAdmin/Index">
+                                            Ürün & Satış Listesi
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="nav-link" href="/Admin/UrunSatisAdmin/UrunSatisForm">
+                                            Ürün & Satış Ekle
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                        }
+
+                        @*SİPARİŞ İÇİN*@
+                        if (yetkiler.Contains("32"))
+                        {
+                            <li class="nav-parent">
+                                <a class="nav-link" href="#">
+                                    <i class="fa fa-window-maximize" aria-hidden="true"></i>
+                                    <span>SİPARİŞ İŞLEMLERİ</span>
+                                </a>
+                                <ul class="nav nav-children">
+
+                                    <li>
+                                        <a class="nav-link" href="/Admin/SiparisAdmin/Index">
+                                            Sipariş Listele
+                                        </a>
+                                    </li>
+
+                                </ul>
+                            </li>
+
+                        }
+
+                        @*HAKKIMIZDA İÇİN*@
+                        if (yetkiler.Contains("35"))
+                        {
+                            <li class="nav-parent">
+                                <a class="nav-link" href="#">
+                                    <i class="fa fa-user-secret" aria-hidden="true"></i>
+                                    <span>HAKKIMIZDA</span>
+                                </a>
+                                <ul class="nav nav-children">
+
+                                    <li>
+                                        <a class="nav-link" href="/Admin/HakkimizdaAdmin/Index">
+                                            HAKKIMIZDA LİSTELE
+                                        </a>
+                                    </li>
+                                    @if (yetkiler.Contains("36"))
+                                    {
+                                        <li>
+                                            <a class="nav-link" href="/Admin/HakkimizdaAdmin/HakkimizdaForm">
+                                                HAKKIMIZDA EKLE
+                                            </a>
+                                        </li>
+                                    }
+                                </ul>
+                            </li>
+
+
+                        }
+
+
+                        @*İLETİŞİM İÇİN*@
+                        if (yetkiler.Contains("39"))
+                        {
+                            <li class="nav-parent">
+                                <a class="nav-link" href="#">
+                                    <i class="fa fa-mobile" aria-hidden="true"></i>
+                                    <span>İLETİŞİM</span>
+                                </a>
+                                <ul class="nav nav-children">
+
+                                    <li>
+                                        <a class="nav-link" href="/Admin/IletisimAdmin/Index">
+                                            İLETİŞİM LİSTELE
+                                        </a>
+                                    </li>
+                                    @if (yetkiler.Contains("40"))
+                                    {
+                                        <li>
+                                            <a class="nav-link" href="/Admin/IletisimAdmin/IletisimForm">
+                                                İLETİŞİM EKLE
+                                            </a>
+                                        </li>
+                                    }
+                                </ul>
+                            </li>
+
+
+                        }
+
+                        @*KARGO İÇİN*@
+                        if (yetkiler.Contains("42"))
+                        {
+                            <li class="nav-parent">
+                                <a class="nav-link" href="#">
+                                    <i class="fa fa-car" aria-hidden="true"></i>
+                                    <span>KARGO</span>
+                                </a>
+
+                                <ul class="nav nav-children">
+
+                                    <li>
+                                        <a class="nav-link" href="/Admin/KargoAdmin/Index">
+                                            KARGO LİSTELE
+                                        </a>
+                                    </li>
+                                    @if (yetkiler.Contains("43"))
+                                    {
+                                        <li>
+                                            <a class="nav-link" href="/Admin/KargoAdmin/KargoForm">
+                                                KARGO EKLE
+                                            </a>
+                                        </li>
+                                    }
+                                </ul>
+                            </li>
+
+
+                            }
+
+                            //YETKİ İÇİN
+                            if (yetkiler.Contains("46"))
+                            {
+                            <li>
+                                <a class="nav-link" href="/Admin/YetkiAdmin">
+                                    <i class="fas fa-user" aria-hidden="true"></i>
+                                    <span>YETKİ İŞLEMLERİ</span>
+                                </a>
+                            </li>
+                        }
+
+
+
+                        <li>
+                            <a class="nav-link" href="/Admin/LoginAdmin/LogOut">
+                                <i class="fas fa-sign-out-alt" aria-hidden="true"></i>
+                                <span>ÇIKIŞ</span>
+                            </a>
+                        </li>
+                    }
+
+                </ul>
+
+
+            </nav>
+
+        </div>
+
+        <script>
+            // Maintain Scroll Position
+            if (typeof localStorage !== 'undefined') {
+                if (localStorage.getItem('sidebar-left-position') !== null) {
+                    var initialPosition = localStorage.getItem('sidebar-left-position'),
+                        sidebarLeft = document.querySelector('#sidebar-left .nano-content');
+
+                    sidebarLeft.scrollTop = initialPosition;
+                }
+            }
+        </script>
+
+
+    </div>
+
+</aside>

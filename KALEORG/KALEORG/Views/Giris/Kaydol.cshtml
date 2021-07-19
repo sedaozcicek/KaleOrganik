@@ -1,0 +1,44 @@
+﻿
+@{
+    ViewBag.Title = "Kaydol";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+<div class="section">
+    <div class="container">
+
+        <div class="col-lg-7">
+
+            <div class="section-title">
+                <h4 class="title">Bizimle İletişime Geçin</h4>
+            </div>
+            @using (Html.BeginForm("Kaydol", "Giris", FormMethod.Post))
+            {
+                <form method="post">
+                    <div class="row">
+                        <div class="form-group col-lg-6">
+                            <input type="text" placeholder="Adınız" class="form-control" name="fname" id="fname" value="">
+                        </div>
+                        <div class="form-group col-lg-6">
+                            <input type="text" placeholder="Soyadınız" class="form-control" name="lname" id="lname" value="">
+                        </div>
+                        <div class="form-group col-lg-12">
+                            <input type="email" placeholder="ornek_mail@gmail.com" class="form-control" name="email" id="email" value="">
+                        </div>
+                        <div class="form-group col-lg-12">
+                            <input type="text" placeholder="Telefon" class="form-control" name="Telefon" id=" Telefon" value="">
+                        </div>
+                        <div class="form-group col-lg-12">
+                            <textarea name="mesaj" id="mesaj" class="form-control" placeholder="Dilek ve Şikayetlerinizi belirttiğiniz için teşekkür ederiz.." rows="8"></textarea>
+                        </div>
+                    </div>
+                    <script>function myFunction() { alert("Görüş bildirdiğiniz için teşekkürler! "); }</script>
+                    <button type="submit" onclick="myFunction()" class="andro_btn-custom primary" name="button">GÖNDER</button>
+                </form>
+            }
+        </div>
+    </div>
+</div>
+

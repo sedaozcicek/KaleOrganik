@@ -1,0 +1,73 @@
+﻿@model KALEORG.Models.T_KATEGORI
+@{
+    ViewBag.Title = "KategoriForm";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+
+<section role="main" class="content-body card-margin">
+    <header class="page-header">
+        <h2>Kategori Ekle / Güncelle</h2>
+
+        <div class="right-wrapper text-right">
+            <ol class="breadcrumbs">
+                <li>
+                    <a href="/Home/Index">
+                        <i class="fas fa-home"></i>
+                    </a>
+                </li>
+                <li><span><a href="/Admin/KategoriAdmin/Index/">Kategori Listesi</a> </span></li>
+                <li><span>Kategori Ekle / Güncelle</span></li>
+            </ol>
+
+            <a class="sidebar-right-toggle" data-open="sidebar-right"><i class="fas fa-chevron-left"></i></a>
+        </div>
+    </header>
+
+    <!-- start: page -->
+    @using (Html.BeginForm("Save", "KategoriAdmin", FormMethod.Post))
+    {
+
+        <div class="row" style="padding:50px 0 0 0">
+            <div class="col-lg-12">
+                <section class="card">
+                    <header class="card-header">
+                        <div class="card-actions">
+                        </div>
+                        <h2 class="card-title">KATEGORI Form</h2>
+
+                        <p class="card-subtitle">
+                            Lütfen (*) içeren alanları boş bırakmayınız.!
+                        </p>
+                    </header>
+                    <div class="card-body">
+                        <div class="row form-group">
+                            <div class="col-lg-5">
+                                <div class="form-group">
+                                    <label class="col-form-label">KATEGORI ADI (*)</label>
+                                    @Html.TextBoxFor(m => m.KATEGORI_ADI, new { ViewBag.Kategori, @class = "form-control", @type = "text", @required = "required" })
+                                    @Html.ValidationMessageFor(m => m.KATEGORI_ADI)
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <footer class="card-footer text-right">
+                        @Html.HiddenFor(m => m.KATEGORI_ID)
+                        <button class="btn btn-success">KAYDET</button>
+                    </footer>
+                </section>
+            </div>
+        </div>
+
+    }
+</section>
+
+@section scripts
+{
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+    <script src="~/Scripts/MaxMinLength.js"></script>
+
+}
+

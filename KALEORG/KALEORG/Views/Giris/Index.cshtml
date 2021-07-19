@@ -1,0 +1,47 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="section">
+    <div class="imgs-wrapper">
+        <img src="assets/img/products/1.png" alt="veg" class="d-none d-lg-block">
+        <img src="assets/img/products/14.png" alt="veg" class="d-none d-lg-block">
+    </div>
+    <div class="container">
+        <div class="andro_auth-wrapper">
+
+            <div class="andro_auth-description bg-cover bg-center dark-overlay dark-overlay-2" style="background-image: url('/img/kalelogo.png')">
+                <div class="andro_auth-description-inner">
+                    <i class="flaticon-diet"></i>
+                    <h2>Hoşgeldiniz !</h2>
+                    <p>Sağlıklı bir yaşam için ilk adımı atın !</p>
+                </div>
+            </div>
+            <div class="andro_auth-form">
+
+                <h2>Giriş Yap</h2>
+                @using (Html.BeginForm("Save", "Giris", FormMethod.Post))
+                {
+                     <form method="post">
+
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Ad Soyad" name="username" id="username" value="">
+                    </div>
+                    <div class="form-group">
+                        <input type="password" class="form-control" placeholder="Şifre" name="password" id="password" value="">
+                    </div>
+                    <a href="#">Şifreni mi unuttun ?</a>
+                    <button type="submit" class="andro_btn-custom primary">Giriş Yap</button>                   
+
+                    <p>Hesabın yok mu ? <a href="register.html">Kaydol</a> </p>
+
+                </form>
+                }
+               
+            </div>
+
+        </div>
+    </div>
+</div>

@@ -1,0 +1,98 @@
+﻿@model List<KALEORG.Models.T_MAIL>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+
+<section role="main" class="content-body">
+
+    <header class="page-header">
+        <h2>Mail Listesi</h2>
+        <div class="right-wrapper text-right">
+            <ol class="breadcrumbs">
+                <li>
+                    <a href="/Home/Index">
+                        <i class="fas fa-home"></i>
+                    </a>
+                </li>
+                <li><span>Mail Listesi</span></li>
+
+            </ol>
+        </div>
+    </header>
+
+    <!-- start: page -->
+
+    <div class="row" style="padding:50px 0 0 0">
+        <div class="col">
+            <section class="card">
+                <header class="card-header">
+                  
+                    <h2 class="card-title">Mail Listesi</h2>
+                </header>
+                <div class="card-body">
+                    <table class="table table-bordered table-striped mb-0" id="datatable-tabletools">
+                        <thead>
+                            <tr>
+                                <th>ADI </th>
+                                <th>SOYADI </th>
+                                <th>MAIL ADRESİ</th>
+                                <th>KONU</th>
+                                <th>İÇERİK</th>
+                                <th>GÜNCELLEME TARİHİ</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @if (Model != null)
+                            {
+                                foreach (var i in Model)
+                                {
+
+                            <tr>
+                                <td>@i.MAIL_AD </td>
+                                <td>@i.MAIL_SOYAD</td>
+                                <td>@i.MAIL_ADRES</td>
+                                <td>@i.MAIL_KONU</td>
+                                <td>@i.MAIL_ICERIK</td>
+                                <td>@i.MAIL_GUNCELLEME_TARIHI</td>
+
+
+                                
+                            </tr>
+
+                                }
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <!-- end: page -->
+
+</section>
+@section scripts
+{
+
+    <!-- Specific Page Vendor -->
+    <script src="/Content/vendor/select2/js/select2.js"></script>
+    <script src="/Content/vendor/datatables/media/js/jquery.dataTables.min.js"></script>
+    <script src="/Content/vendor/datatables/media/js/dataTables.bootstrap4.min.js"></script>
+    <script src="/Content/vendor/datatables/extras/TableTools/Buttons-1.4.2/js/dataTables.buttons.min.js"></script>
+    <script src="/Content/vendor/datatables/extras/TableTools/Buttons-1.4.2/js/buttons.bootstrap4.min.js"></script>
+    <script src="/Content/vendor/datatables/extras/TableTools/Buttons-1.4.2/js/buttons.html5.min.js"></script>
+    <script src="/Content/vendor/datatables/extras/TableTools/Buttons-1.4.2/js/buttons.print.min.js"></script>
+    <script src="/Content/vendor/datatables/extras/TableTools/JSZip-2.5.0/jszip.min.js"></script>
+    <script src="/Content/vendor/datatables/extras/TableTools/pdfmake-0.1.32/pdfmake.min.js"></script>
+    <script src="/Content/vendor/datatables/extras/TableTools/pdfmake-0.1.32/vfs_fonts.js"></script>
+
+
+    <!-- Examples -->
+    <script src="/Scripts/js/examples/examples.datatables.default.js"></script>
+    <script src="/Scripts/js/examples/examples.datatables.row.with.details.js"></script>
+    <script src="/Scripts/js/examples/examples.datatables.tabletools.js"></script>
+
+}
+

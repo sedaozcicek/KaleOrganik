@@ -1,0 +1,86 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html class="fixed sidebar-left-collapsed">
+<head>
+
+    <!-- Basic -->
+    <meta charset="UTF-8">
+
+    <title>KALE ORGANIK</title>
+
+    <meta name="description" content="KALE ORGANIK">
+    <meta name="author" content="KALE ORGANIK">
+
+    <!-- Mobile Metas -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <link href="/Areas/Admin/Content/toastr.min.css" rel="stylesheet" />
+    <link href="/Areas/Admin/Content/site.css" rel="stylesheet" />
+    <!-- Web Fonts  -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800|Shadows+Into+Light" rel="stylesheet" type="text/css">
+    <!-- Vendor CSS -->
+    <link rel="stylesheet" href="/Areas/Admin/Scripts/vendor/bootstrap/css/bootstrap.css" />
+    <link rel="stylesheet" href="/Areas/Admin/Scripts/vendor/font-awesome/css/fontawesome-all.min.css" />
+    <!-- Theme CSS -->
+    <link rel="stylesheet" href="/Areas/Admin/Content/css/theme.css" />
+    <!-- Skin CSS -->
+    <link rel="stylesheet" href="/Areas/Admin/Content/css/skins/default.css" />
+    <!-- Theme Custom CSS -->
+    <link rel="stylesheet" href="/Areas/Admin/Content/css/custom.css">
+    <!-- Başlık Kısmı için CSS -->
+    <script src="/Areas/Admin/Scripts/vendor/modernizr/modernizr.js"></script>
+    <!-- Datatable için CSS -->
+    <link rel="stylesheet" href="/Areas/Admin/Scripts/vendor/select2/css/select2.css" />
+    <link rel="stylesheet" href="/Areas/Admin/Scripts/vendor/select2-bootstrap-theme/select2-bootstrap.min.css" />
+    <link rel="stylesheet" href="/Areas/Admin/Scripts/vendor/datatables/media/css/dataTables.bootstrap4.css" />
+
+    <link rel="stylesheet" href="/Areas/Admin/Scripts/vendor/summernote/summernote-bs4.css" />
+    <link rel="stylesheet" href="/Areas/Admin/Scripts/vendor/codemirror/lib/codemirror.css" />
+
+
+</head>
+<body>
+
+
+    <section class="body">
+
+        @Html.Partial("_Header")
+
+        <div class="inner-wrapper">
+            @Html.Partial("_Menu")
+
+            @RenderBody()
+
+        </div>
+
+    </section>
+
+    <!-- /Scripts/vendor -->
+    <script src="/Areas/Admin/Scripts/jquery-2.1.1.js"></script>
+    <script src="/Areas/Admin/Scripts/jquery-ui-1.10.4.min.js"></script>
+    <script src="/Areas/Admin/Scripts/vendor/popper/umd/popper.min.js"></script>
+    <script src="/Areas/Admin/Scripts/toastr.js"></script>
+    <script src="/Areas/Admin/Scripts/toastr.min.js"></script>
+
+    @RenderSection("scripts", false)
+    @Html.Raw(@TempData["alert"])
+
+    <script src="/Areas/Admin/Scripts/vendor/jquery/jquery.js"></script>
+    <script src="/Areas/Admin/Scripts/vendor/jquery-browser-mobile/jquery.browser.mobile.js"></script>
+    <script src="/Areas/Admin/Scripts/vendor/bootstrap/js/bootstrap.js"></script>
+    <script src="/Areas/Admin/Scripts/vendor/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
+    <script src="/Areas/Admin/Scripts/vendor/common/common.js"></script>
+    <script src="/Areas/Admin/Scripts/vendor/nanoscroller/nanoscroller.js"></script>
+
+    <!-- Theme Base, Components and Settings -->
+    <script src="/Areas/Admin/Scripts/theme.js"></script>
+    <!-- Theme Initialization Files -->
+    <script src="/Areas/Admin/Scripts/theme.init.js"></script>
+    <!-- Examples -->
+
+</body>
+</html>

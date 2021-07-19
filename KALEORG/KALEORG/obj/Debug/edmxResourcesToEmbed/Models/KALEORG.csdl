@@ -1,0 +1,528 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="KALEORGANICModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="KULLANICI_KATEGORI">
+    <Key>
+      <PropertyRef Name="KULLANICI_KATEGORI_ID" />
+    </Key>
+    <Property Name="KULLANICI_KATEGORI_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="KULLANICI_ID" Type="Int32" Nullable="false" />
+    <Property Name="KATEGORI" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="T_KULLANICI" Relationship="Self.FK_KULLANICI_KATEGORI_T_KULLANICI" FromRole="KULLANICI_KATEGORI" ToRole="T_KULLANICI" />
+  </EntityType>
+  <EntityType Name="T_ADRES">
+    <Key>
+      <PropertyRef Name="ADRES_ID" />
+    </Key>
+    <Property Name="ADRES_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="MUSTERI_ID" Type="Int32" Nullable="false" />
+    <Property Name="ULKE" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="IL" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ILCE" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="POSTAKODU" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ADRES" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="KAPALI" Type="Boolean" Nullable="false" />
+    <Property Name="GUNCELLEME_TARIHI" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="T_MUSTERI" Relationship="Self.FK_T_ADRES_T_MUSTERI" FromRole="T_ADRES" ToRole="T_MUSTERI" />
+  </EntityType>
+  <EntityType Name="T_HAKKIMIZDA">
+    <Key>
+      <PropertyRef Name="HAKKIMIZDA_ID" />
+    </Key>
+    <Property Name="HAKKIMIZDA_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="HAKKIMIZDA_ICERIK" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+  </EntityType>
+  <EntityType Name="T_ILETISIM">
+    <Key>
+      <PropertyRef Name="ILETISIM_ID" />
+    </Key>
+    <Property Name="ILETISIM_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ADRES" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="TELEFON1" Type="String" MaxLength="15" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="TELEFON2" Type="String" MaxLength="15" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="FAKS" Type="String" MaxLength="15" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="MAIL_MUHASEBE" Type="String" MaxLength="75" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="MAIL_SATIS" Type="String" MaxLength="75" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="MAIL_INFO" Type="String" MaxLength="75" FixedLength="false" Unicode="false" Nullable="false" />
+  </EntityType>
+  <EntityType Name="T_KARGO">
+    <Key>
+      <PropertyRef Name="KARGO_FIRMA_ID" />
+    </Key>
+    <Property Name="KARGO_FIRMA_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FIRMA_ADI" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="SOZLESME_NO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="SUBE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="SUBE_NO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="T_KATEGORI">
+    <Key>
+      <PropertyRef Name="KATEGORI_ID" />
+    </Key>
+    <Property Name="KATEGORI_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="KATEGORI_ADI" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="KAPALI" Type="Boolean" Nullable="false" />
+    <Property Name="GUNCELLEME_TARIHI" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="T_URUN" Relationship="Self.FK_T_URUN_T_KATEGORI" FromRole="T_KATEGORI" ToRole="T_URUN" />
+  </EntityType>
+  <EntityType Name="T_KULLANICI">
+    <Key>
+      <PropertyRef Name="Kullanici_ID" />
+    </Key>
+    <Property Name="Kullanici_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Kullanici_Adi" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Sifre" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="KAPALI" Type="Boolean" Nullable="false" />
+    <Property Name="GUNCELLEME_TARIHI" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="KULLANICI_KATEGORI" Relationship="Self.FK_KULLANICI_KATEGORI_T_KULLANICI" FromRole="T_KULLANICI" ToRole="KULLANICI_KATEGORI" />
+  </EntityType>
+  <EntityType Name="T_MUSTERI">
+    <Key>
+      <PropertyRef Name="MUSTERI_ID" />
+    </Key>
+    <Property Name="MUSTERI_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="MUSTERI_ADI" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="MUSTERI_SOYADI" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="MUSTERI_MAIL" Type="String" MaxLength="75" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="MUSTERI_TELEFON" Type="String" MaxLength="15" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="KAPALI" Type="Boolean" Nullable="false" />
+    <Property Name="GUNCELLEME_TARIHI" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="T_ADRES" Relationship="Self.FK_T_ADRES_T_MUSTERI" FromRole="T_MUSTERI" ToRole="T_ADRES" />
+    <NavigationProperty Name="T_SIPARIS" Relationship="KALEORGANICModel.FK_T_SIPARIS_T_MUSTERI" FromRole="T_MUSTERI" ToRole="T_SIPARIS" />
+    <NavigationProperty Name="T_SEPET" Relationship="KALEORGANICModel.FK_T_SEPET_T_MUSTERI" FromRole="T_MUSTERI" ToRole="T_SEPET" />
+    <NavigationProperty Name="T_URUN_SATIS" Relationship="KALEORGANICModel.FK_T_URUN_SATIS_T_MUSTERI" FromRole="T_MUSTERI" ToRole="T_URUN_SATIS" />
+  </EntityType>
+  <EntityType Name="T_URUN">
+    <Key>
+      <PropertyRef Name="URUN_ID" />
+    </Key>
+    <Property Name="URUN_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="KATEGORI_ID" Type="Int32" Nullable="false" />
+    <Property Name="URUN_ADI" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="URUN_FIYAT" Type="Decimal" Precision="7" Scale="2" Nullable="false" />
+    <Property Name="FOTO" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ACIKLAMA" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="KAPALI" Type="Boolean" Nullable="false" />
+    <Property Name="GUNCELLEME_TARIHI" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="T_KATEGORI" Relationship="Self.FK_T_URUN_T_KATEGORI" FromRole="T_URUN" ToRole="T_KATEGORI" />
+    <NavigationProperty Name="T_URUN_YORUM" Relationship="Self.FK_T_URUN_YORUM_T_URUN" FromRole="T_URUN" ToRole="T_URUN_YORUM" />
+    <NavigationProperty Name="T_URUN_FOTO" Relationship="KALEORGANICModel.FK_T_URUN_FOTO_T_URUN" FromRole="T_URUN" ToRole="T_URUN_FOTO" />
+    <NavigationProperty Name="T_SEPET" Relationship="KALEORGANICModel.FK_T_SEPET_T_URUN" FromRole="T_URUN" ToRole="T_SEPET" />
+    <NavigationProperty Name="T_URUN_SATIS" Relationship="KALEORGANICModel.FK_T_URUN_SATIS_T_URUN" FromRole="T_URUN" ToRole="T_URUN_SATIS" />
+  </EntityType>
+  <EntityType Name="T_URUN_YORUM">
+    <Key>
+      <PropertyRef Name="URUN_YORUM_ID" />
+    </Key>
+    <Property Name="URUN_YORUM_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="URUN_ID" Type="Int32" Nullable="false" />
+    <Property Name="KAPALI" Type="Boolean" Nullable="false" />
+    <Property Name="GUNCELLEME_TARIHI" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="YORUM" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="YILDIZ" Type="Int32" Nullable="false" />
+    <Property Name="YORUM_AD_SOYAD" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="YORUM_MAIL" Type="String" MaxLength="75" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="T_URUN" Relationship="Self.FK_T_URUN_YORUM_T_URUN" FromRole="T_URUN_YORUM" ToRole="T_URUN" />
+  </EntityType>
+  <Association Name="FK_KULLANICI_KATEGORI_T_KULLANICI">
+    <End Role="T_KULLANICI" Type="Self.T_KULLANICI" Multiplicity="1" />
+    <End Role="KULLANICI_KATEGORI" Type="Self.KULLANICI_KATEGORI" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="T_KULLANICI">
+        <PropertyRef Name="Kullanici_ID" />
+      </Principal>
+      <Dependent Role="KULLANICI_KATEGORI">
+        <PropertyRef Name="KULLANICI_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_T_ADRES_T_MUSTERI">
+    <End Role="T_MUSTERI" Type="Self.T_MUSTERI" Multiplicity="1" />
+    <End Role="T_ADRES" Type="Self.T_ADRES" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="T_MUSTERI">
+        <PropertyRef Name="MUSTERI_ID" />
+      </Principal>
+      <Dependent Role="T_ADRES">
+        <PropertyRef Name="MUSTERI_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_T_URUN_T_KATEGORI">
+    <End Role="T_KATEGORI" Type="Self.T_KATEGORI" Multiplicity="1" />
+    <End Role="T_URUN" Type="Self.T_URUN" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="T_KATEGORI">
+        <PropertyRef Name="KATEGORI_ID" />
+      </Principal>
+      <Dependent Role="T_URUN">
+        <PropertyRef Name="KATEGORI_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_T_URUN_YORUM_T_URUN">
+    <End Role="T_URUN" Type="Self.T_URUN" Multiplicity="1" />
+    <End Role="T_URUN_YORUM" Type="Self.T_URUN_YORUM" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="T_URUN">
+        <PropertyRef Name="URUN_ID" />
+      </Principal>
+      <Dependent Role="T_URUN_YORUM">
+        <PropertyRef Name="URUN_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="KALEORGANICEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="KULLANICI_KATEGORI" EntityType="Self.KULLANICI_KATEGORI" />
+    <EntitySet Name="T_ADRES" EntityType="Self.T_ADRES" />
+    <EntitySet Name="T_HAKKIMIZDA" EntityType="Self.T_HAKKIMIZDA" />
+    <EntitySet Name="T_ILETISIM" EntityType="Self.T_ILETISIM" />
+    <EntitySet Name="T_KARGO" EntityType="Self.T_KARGO" />
+    <EntitySet Name="T_KATEGORI" EntityType="Self.T_KATEGORI" />
+    <EntitySet Name="T_KULLANICI" EntityType="Self.T_KULLANICI" />
+    <EntitySet Name="T_MUSTERI" EntityType="Self.T_MUSTERI" />
+    <EntitySet Name="T_URUN" EntityType="Self.T_URUN" />
+    <EntitySet Name="T_URUN_YORUM" EntityType="Self.T_URUN_YORUM" />
+    <AssociationSet Name="FK_KULLANICI_KATEGORI_T_KULLANICI" Association="Self.FK_KULLANICI_KATEGORI_T_KULLANICI">
+      <End Role="T_KULLANICI" EntitySet="T_KULLANICI" />
+      <End Role="KULLANICI_KATEGORI" EntitySet="KULLANICI_KATEGORI" />
+    </AssociationSet>
+    <AssociationSet Name="FK_T_ADRES_T_MUSTERI" Association="Self.FK_T_ADRES_T_MUSTERI">
+      <End Role="T_MUSTERI" EntitySet="T_MUSTERI" />
+      <End Role="T_ADRES" EntitySet="T_ADRES" />
+    </AssociationSet>
+    <AssociationSet Name="FK_T_URUN_T_KATEGORI" Association="Self.FK_T_URUN_T_KATEGORI">
+      <End Role="T_KATEGORI" EntitySet="T_KATEGORI" />
+      <End Role="T_URUN" EntitySet="T_URUN" />
+    </AssociationSet>
+    <AssociationSet Name="FK_T_URUN_YORUM_T_URUN" Association="Self.FK_T_URUN_YORUM_T_URUN">
+      <End Role="T_URUN" EntitySet="T_URUN" />
+      <End Role="T_URUN_YORUM" EntitySet="T_URUN_YORUM" />
+    </AssociationSet>
+    <FunctionImport Name="MusteriAdresList" ReturnType="Collection(KALEORGANICModel.MusteriAdresList_Result)">
+      <Parameter Name="musteriId" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="UrunKategoriList" ReturnType="Collection(KALEORGANICModel.UrunKategoriList_Result)">
+      <Parameter Name="kapali" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="UrunSatisUrunMusteri" ReturnType="Collection(KALEORGANICModel.UrunSatisUrunMusteri_Result)">
+      <Parameter Name="usKAPALI" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <EntitySet Name="T_SERTIFIKA" EntityType="KALEORGANICModel.T_SERTIFIKA" />
+    <EntitySet Name="T_URUN_FOTO" EntityType="KALEORGANICModel.T_URUN_FOTO" />
+    <AssociationSet Name="FK_T_URUN_FOTO_T_URUN" Association="KALEORGANICModel.FK_T_URUN_FOTO_T_URUN">
+      <End Role="T_URUN" EntitySet="T_URUN" />
+      <End Role="T_URUN_FOTO" EntitySet="T_URUN_FOTO" />
+    </AssociationSet>
+    <FunctionImport Name="UrunAdFoto" ReturnType="Collection(KALEORGANICModel.UrunAdFoto_Result)">
+      <Parameter Name="KAPALI" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <EntitySet Name="T_SIPARIS" EntityType="KALEORGANICModel.T_SIPARIS" />
+    <AssociationSet Name="FK_T_SIPARIS_T_MUSTERI" Association="KALEORGANICModel.FK_T_SIPARIS_T_MUSTERI">
+      <End Role="T_MUSTERI" EntitySet="T_MUSTERI" />
+      <End Role="T_SIPARIS" EntitySet="T_SIPARIS" />
+    </AssociationSet>
+    <EntitySet Name="T_MAIL" EntityType="KALEORGANICModel.T_MAIL" />
+    <FunctionImport Name="UrunYorumMusteri" ReturnType="Collection(KALEORGANICModel.UrunYorumMusteri_Result)">
+      <Parameter Name="KAPALI" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <EntitySet Name="T_SEPET" EntityType="KALEORGANICModel.T_SEPET" />
+    <EntitySet Name="T_URUN_SATIS" EntityType="KALEORGANICModel.T_URUN_SATIS" />
+    <AssociationSet Name="FK_T_SEPET_T_MUSTERI" Association="KALEORGANICModel.FK_T_SEPET_T_MUSTERI">
+      <End Role="T_MUSTERI" EntitySet="T_MUSTERI" />
+      <End Role="T_SEPET" EntitySet="T_SEPET" />
+    </AssociationSet>
+    <AssociationSet Name="FK_T_URUN_SATIS_T_MUSTERI" Association="KALEORGANICModel.FK_T_URUN_SATIS_T_MUSTERI">
+      <End Role="T_MUSTERI" EntitySet="T_MUSTERI" />
+      <End Role="T_URUN_SATIS" EntitySet="T_URUN_SATIS" />
+    </AssociationSet>
+    <AssociationSet Name="FK_T_SEPET_T_URUN" Association="KALEORGANICModel.FK_T_SEPET_T_URUN">
+      <End Role="T_URUN" EntitySet="T_URUN" />
+      <End Role="T_SEPET" EntitySet="T_SEPET" />
+    </AssociationSet>
+    <AssociationSet Name="FK_T_SEPET_T_URUN_SATIS" Association="KALEORGANICModel.FK_T_SEPET_T_URUN_SATIS">
+      <End Role="T_URUN_SATIS" EntitySet="T_URUN_SATIS" />
+      <End Role="T_SEPET" EntitySet="T_SEPET" />
+    </AssociationSet>
+    <AssociationSet Name="FK_T_SIPARIS_T_URUN_SATIS" Association="KALEORGANICModel.FK_T_SIPARIS_T_URUN_SATIS">
+      <End Role="T_URUN_SATIS" EntitySet="T_URUN_SATIS" />
+      <End Role="T_SIPARIS" EntitySet="T_SIPARIS" />
+    </AssociationSet>
+    <AssociationSet Name="FK_T_URUN_SATIS_T_URUN" Association="KALEORGANICModel.FK_T_URUN_SATIS_T_URUN">
+      <End Role="T_URUN" EntitySet="T_URUN" />
+      <End Role="T_URUN_SATIS" EntitySet="T_URUN_SATIS" />
+    </AssociationSet>
+    <FunctionImport Name="Sepet" ReturnType="Collection(KALEORGANICModel.Sepet_Result)">
+      <Parameter Name="KAPALI" Mode="In" Type="Int32" />
+    </FunctionImport>
+  </EntityContainer>
+  <ComplexType Name="MusteriAdresList_Result">
+    <Property Type="Int32" Name="MUSTERI_ID" Nullable="false" />
+    <Property Type="String" Name="MUSTERI_ADI" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="MUSTERI_SOYADI" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="MUSTERI_TELEFON" Nullable="false" MaxLength="15" />
+    <Property Type="String" Name="MUSTERI_MAIL" Nullable="false" MaxLength="75" />
+    <Property Type="Int32" Name="ADRES_ID" Nullable="false" />
+    <Property Type="String" Name="ULKE" Nullable="false" MaxLength="30" />
+    <Property Type="String" Name="IL" Nullable="false" MaxLength="30" />
+    <Property Type="String" Name="ILCE" Nullable="false" MaxLength="30" />
+    <Property Type="String" Name="POSTAKODU" Nullable="false" MaxLength="30" />
+    <Property Type="String" Name="ADRES" Nullable="false" MaxLength="500" />
+  </ComplexType>
+  <ComplexType Name="UrunKategoriList_Result">
+    <Property Type="Int32" Name="URUN_ID" Nullable="false" />
+    <Property Type="String" Name="URUN_ADI" Nullable="false" MaxLength="150" />
+    <Property Type="Decimal" Name="URUN_FIYAT" Nullable="false" Precision="7" Scale="2" />
+    <Property Type="String" Name="FOTO" Nullable="false" MaxLength="250" />
+    <Property Type="String" Name="ACIKLAMA" Nullable="false" MaxLength="1000" />
+    <Property Type="Boolean" Name="KAPALI" Nullable="false" />
+    <Property Type="DateTime" Name="GUNCELLEME_TARIHI" Nullable="false" Precision="23" />
+    <Property Type="String" Name="KATEGORI_ADI" Nullable="false" MaxLength="50" />
+    <Property Type="Int32" Name="KATEGORI_ID" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="UrunSatisUrunMusteri_Result">
+    <Property Type="Int32" Name="URUN_SATIS_ID" Nullable="false" />
+    <Property Type="Int32" Name="URUN_ID" Nullable="false" />
+    <Property Type="DateTime" Name="SATIS_TARIHI" Nullable="false" Precision="23" />
+    <Property Type="Decimal" Name="SATIS_FIYAT" Nullable="false" Precision="7" Scale="2" />
+    <Property Type="Int32" Name="MUSTERI_ID" Nullable="false" />
+    <Property Type="Byte" Name="MIKTAR" Nullable="false" />
+    <Property Type="String" Name="KARGO_NO" Nullable="false" MaxLength="50" />
+    <Property Type="Int32" Name="KARGO_FIRMA_ID" Nullable="false" />
+    <Property Type="Boolean" Name="KAPALI" Nullable="false" />
+    <Property Type="DateTime" Name="GUNCELLEME_TARIHI" Nullable="false" Precision="23" />
+    <Property Type="Decimal" Name="URUN_FIYAT" Nullable="false" Precision="7" Scale="2" />
+    <Property Type="String" Name="URUN_ADI" Nullable="false" MaxLength="150" />
+    <Property Type="Int32" Name="KATEGORI_ID" Nullable="false" />
+    <Property Type="Boolean" Name="UKAPALI" Nullable="false" />
+    <Property Type="DateTime" Name="UGUNCELLEME_TARIHI" Nullable="false" Precision="23" />
+    <Property Type="String" Name="ACIKLAMA" Nullable="false" MaxLength="1000" />
+    <Property Type="String" Name="FOTO" Nullable="false" MaxLength="250" />
+    <Property Type="String" Name="MUSTERI_TELEFON" Nullable="false" MaxLength="15" />
+    <Property Type="String" Name="MUSTERI_SOYADI" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="MUSTERI_MAIL" Nullable="false" MaxLength="75" />
+    <Property Type="String" Name="MUSTERI_ADI" Nullable="false" MaxLength="50" />
+    <Property Type="Boolean" Name="MKAPALI" Nullable="false" />
+    <Property Type="DateTime" Name="MGUNCELLEME_TARIHI" Nullable="false" Precision="23" />
+    <Property Type="String" Name="FIRMA_ADI" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="SOZLESME_NO" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="SUBE" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="SUBE_NO" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <EntityType Name="T_SERTIFIKA">
+    <Key>
+      <PropertyRef Name="SERTIFIKA_ID" />
+    </Key>
+    <Property Name="SERTIFIKA_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="SERTIFIKA_ADI" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="KAPALI" Type="Boolean" Nullable="false" />
+    <Property Name="GUNCELLEME_TARIHI" Type="DateTime" Nullable="false" Precision="3" />
+  </EntityType>
+  <EntityType Name="T_URUN_FOTO">
+    <Key>
+      <PropertyRef Name="URUN_FOTO_ID" />
+    </Key>
+    <Property Name="URUN_FOTO_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="URUN_ID" Type="Int32" Nullable="false" />
+    <Property Name="FOTO" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="T_URUN" Relationship="KALEORGANICModel.FK_T_URUN_FOTO_T_URUN" FromRole="T_URUN_FOTO" ToRole="T_URUN" />
+  </EntityType>
+  <Association Name="FK_T_URUN_FOTO_T_URUN">
+    <End Type="KALEORGANICModel.T_URUN" Role="T_URUN" Multiplicity="1" />
+    <End Type="KALEORGANICModel.T_URUN_FOTO" Role="T_URUN_FOTO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="T_URUN">
+        <PropertyRef Name="URUN_ID" />
+      </Principal>
+      <Dependent Role="T_URUN_FOTO">
+        <PropertyRef Name="URUN_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <ComplexType Name="UrunAdFoto_Result">
+    <Property Type="Int32" Name="URUN_FOTO_ID" Nullable="false" />
+    <Property Type="Int32" Name="URUN_ID" Nullable="false" />
+    <Property Type="String" Name="FOTO" Nullable="false" MaxLength="250" />
+    <Property Type="String" Name="URUN_ADI" Nullable="false" MaxLength="150" />
+    <Property Type="Boolean" Name="KAPALI" Nullable="false" />
+  </ComplexType>
+  <EntityType Name="T_SIPARIS">
+    <Key>
+      <PropertyRef Name="SIPARIS_ID" />
+    </Key>
+    <Property Name="SIPARIS_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="MUSTERI_ID" Type="Int32" Nullable="false" />
+    <Property Name="ADRES_ID" Type="Int32" Nullable="false" />
+    <Property Name="URUN_SATIS_ID" Type="Int32" Nullable="false" />
+    <Property Name="SIPARIS_TARIHI" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="KAPALI" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="T_MUSTERI" Relationship="KALEORGANICModel.FK_T_SIPARIS_T_MUSTERI" FromRole="T_SIPARIS" ToRole="T_MUSTERI" />
+    <NavigationProperty Name="T_URUN_SATIS" Relationship="KALEORGANICModel.FK_T_SIPARIS_T_URUN_SATIS" FromRole="T_SIPARIS" ToRole="T_URUN_SATIS" />
+    <Property Name="URUN_ID" Type="Int32" Nullable="false" />
+    <Property Name="KARGO_FIRMA_ID" Type="Int32" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_T_SIPARIS_T_MUSTERI">
+    <End Type="KALEORGANICModel.T_MUSTERI" Role="T_MUSTERI" Multiplicity="1" />
+    <End Type="KALEORGANICModel.T_SIPARIS" Role="T_SIPARIS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="T_MUSTERI">
+        <PropertyRef Name="MUSTERI_ID" />
+      </Principal>
+      <Dependent Role="T_SIPARIS">
+        <PropertyRef Name="MUSTERI_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="T_MAIL">
+    <Key>
+      <PropertyRef Name="MAIL_ID" />
+    </Key>
+    <Property Name="MAIL_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="MAIL_AD" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="false" />
+    <Property Name="MAIL_SOYAD" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="false" />
+    <Property Name="MAIL_KONU" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="false" />
+    <Property Name="MAIL_ICERIK" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="MAIL_GUNCELLEME_TARIHI" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="MAIL_ADRES" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <ComplexType Name="UrunYorumMusteri_Result">
+    <Property Type="Int32" Name="URUN_YORUM_ID" Nullable="false" />
+    <Property Type="String" Name="YORUM_AD_SOYAD" Nullable="false" MaxLength="100" />
+    <Property Type="String" Name="YORUM_MAIL" Nullable="false" MaxLength="75" />
+    <Property Type="String" Name="YORUM" Nullable="false" MaxLength="200" />
+    <Property Type="Int32" Name="YILDIZ" Nullable="false" />
+    <Property Type="Boolean" Name="KAPALI" Nullable="false" />
+    <Property Type="DateTime" Name="GUNCELLEME_TARIHI" Nullable="false" Precision="23" />
+    <Property Type="Int32" Name="URUN_ID" Nullable="false" />
+    <Property Type="String" Name="URUN_ADI" Nullable="false" MaxLength="150" />
+    <Property Type="Decimal" Name="URUN_FIYAT" Nullable="false" Precision="7" Scale="2" />
+    <Property Type="String" Name="FOTO" Nullable="false" MaxLength="250" />
+    <Property Type="String" Name="ACIKLAMA" Nullable="false" MaxLength="1000" />
+    <Property Type="Int32" Name="ORTYILDIZ" Nullable="true" />
+  </ComplexType>
+  <EntityType Name="T_SEPET">
+    <Key>
+      <PropertyRef Name="SEPET_ID" />
+    </Key>
+    <Property Name="SEPET_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="URUN_ID" Type="Int32" Nullable="false" />
+    <Property Name="MUSTERI_ID" Type="Int32" Nullable="false" />
+    <Property Name="URUN_SATIS_ID" Type="Int32" Nullable="false" />
+    <Property Name="GUNCELLEME_TARIHI" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="T_MUSTERI" Relationship="KALEORGANICModel.FK_T_SEPET_T_MUSTERI" FromRole="T_SEPET" ToRole="T_MUSTERI" />
+    <NavigationProperty Name="T_URUN" Relationship="KALEORGANICModel.FK_T_SEPET_T_URUN" FromRole="T_SEPET" ToRole="T_URUN" />
+    <NavigationProperty Name="T_URUN_SATIS" Relationship="KALEORGANICModel.FK_T_SEPET_T_URUN_SATIS" FromRole="T_SEPET" ToRole="T_URUN_SATIS" />
+  </EntityType>
+  <EntityType Name="T_URUN_SATIS">
+    <Key>
+      <PropertyRef Name="URUN_SATIS_ID" />
+    </Key>
+    <Property Name="URUN_SATIS_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="URUN_ID" Type="Int32" Nullable="false" />
+    <Property Name="SATIS_TARIHI" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="MUSTERI_ID" Type="Int32" Nullable="false" />
+    <Property Name="KARGO_FIRMA_ID" Type="Int32" Nullable="false" />
+    <Property Name="KARGO_NO" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="MIKTAR" Type="Byte" Nullable="false" />
+    <Property Name="SATIS_FIYAT" Type="Decimal" Nullable="false" Precision="7" Scale="2" />
+    <Property Name="KAPALI" Type="Boolean" Nullable="false" />
+    <Property Name="GUNCELLEME_TARIHI" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="T_MUSTERI" Relationship="KALEORGANICModel.FK_T_URUN_SATIS_T_MUSTERI" FromRole="T_URUN_SATIS" ToRole="T_MUSTERI" />
+    <NavigationProperty Name="T_SEPET" Relationship="KALEORGANICModel.FK_T_SEPET_T_URUN_SATIS" FromRole="T_URUN_SATIS" ToRole="T_SEPET" />
+    <NavigationProperty Name="T_SIPARIS" Relationship="KALEORGANICModel.FK_T_SIPARIS_T_URUN_SATIS" FromRole="T_URUN_SATIS" ToRole="T_SIPARIS" />
+    <NavigationProperty Name="T_URUN" Relationship="KALEORGANICModel.FK_T_URUN_SATIS_T_URUN" FromRole="T_URUN_SATIS" ToRole="T_URUN" />
+  </EntityType>
+  <Association Name="FK_T_SEPET_T_MUSTERI">
+    <End Type="KALEORGANICModel.T_MUSTERI" Role="T_MUSTERI" Multiplicity="1" />
+    <End Type="KALEORGANICModel.T_SEPET" Role="T_SEPET" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="T_MUSTERI">
+        <PropertyRef Name="MUSTERI_ID" />
+      </Principal>
+      <Dependent Role="T_SEPET">
+        <PropertyRef Name="MUSTERI_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_T_URUN_SATIS_T_MUSTERI">
+    <End Type="KALEORGANICModel.T_MUSTERI" Role="T_MUSTERI" Multiplicity="1" />
+    <End Type="KALEORGANICModel.T_URUN_SATIS" Role="T_URUN_SATIS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="T_MUSTERI">
+        <PropertyRef Name="MUSTERI_ID" />
+      </Principal>
+      <Dependent Role="T_URUN_SATIS">
+        <PropertyRef Name="MUSTERI_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_T_SEPET_T_URUN">
+    <End Type="KALEORGANICModel.T_URUN" Role="T_URUN" Multiplicity="1" />
+    <End Type="KALEORGANICModel.T_SEPET" Role="T_SEPET" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="T_URUN">
+        <PropertyRef Name="URUN_ID" />
+      </Principal>
+      <Dependent Role="T_SEPET">
+        <PropertyRef Name="URUN_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_T_SEPET_T_URUN_SATIS">
+    <End Type="KALEORGANICModel.T_URUN_SATIS" Role="T_URUN_SATIS" Multiplicity="1" />
+    <End Type="KALEORGANICModel.T_SEPET" Role="T_SEPET" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="T_URUN_SATIS">
+        <PropertyRef Name="URUN_SATIS_ID" />
+      </Principal>
+      <Dependent Role="T_SEPET">
+        <PropertyRef Name="URUN_SATIS_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_T_SIPARIS_T_URUN_SATIS">
+    <End Type="KALEORGANICModel.T_URUN_SATIS" Role="T_URUN_SATIS" Multiplicity="1" />
+    <End Type="KALEORGANICModel.T_SIPARIS" Role="T_SIPARIS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="T_URUN_SATIS">
+        <PropertyRef Name="URUN_SATIS_ID" />
+      </Principal>
+      <Dependent Role="T_SIPARIS">
+        <PropertyRef Name="URUN_SATIS_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_T_URUN_SATIS_T_URUN">
+    <End Type="KALEORGANICModel.T_URUN" Role="T_URUN" Multiplicity="1" />
+    <End Type="KALEORGANICModel.T_URUN_SATIS" Role="T_URUN_SATIS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="T_URUN">
+        <PropertyRef Name="URUN_ID" />
+      </Principal>
+      <Dependent Role="T_URUN_SATIS">
+        <PropertyRef Name="URUN_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <ComplexType Name="Sepet_Result">
+    <Property Type="Int32" Name="MUSTERI_ID" Nullable="false" />
+    <Property Type="String" Name="MUSTERI_ADI" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="MUSTERI_SOYADI" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="MUSTERI_TELEFON" Nullable="false" MaxLength="15" />
+    <Property Type="Int32" Name="ADRES_ID" Nullable="false" />
+    <Property Type="String" Name="ULKE" Nullable="false" MaxLength="30" />
+    <Property Type="String" Name="IL" Nullable="false" MaxLength="30" />
+    <Property Type="String" Name="ILCE" Nullable="false" MaxLength="30" />
+    <Property Type="String" Name="ADRES" Nullable="false" MaxLength="500" />
+    <Property Type="Int32" Name="URUN_ID" Nullable="false" />
+    <Property Type="String" Name="URUN_ADI" Nullable="false" MaxLength="150" />
+    <Property Type="Decimal" Name="URUN_FIYAT" Nullable="false" Precision="7" Scale="2" />
+    <Property Type="String" Name="FOTO" Nullable="false" MaxLength="250" />
+    <Property Type="Int32" Name="KARGO_FIRMA_ID" Nullable="false" />
+    <Property Type="String" Name="FIRMA_ADI" Nullable="false" MaxLength="50" />
+    <Property Type="Int32" Name="URUN_SATIS_ID" Nullable="false" />
+    <Property Type="Byte" Name="MIKTAR" Nullable="false" />
+    <Property Type="Int32" Name="SIPARIS_ID" Nullable="false" />
+    <Property Type="DateTime" Name="SIPARIS_TARIHI" Nullable="false" Precision="23" />
+    <Property Type="Boolean" Name="KAPALI" Nullable="false" />
+  </ComplexType>
+</Schema>

@@ -1,0 +1,96 @@
+﻿
+<header class="header">
+    <div class="logo-container">
+        <a href="/Home/Index" class="logo">
+            <img src="~/Areas/Admin/img/kalepng.png" style="width:10%;padding-bottom:10px"  alt="logo" />
+        </a>
+        <div class="d-md-none toggle-sidebar-left" data-toggle-class="sidebar-left-opened" data-target="html" data-fire-event="sidebar-left-opened">
+            <i class="fas fa-bars" aria-label="Toggle sidebar"></i>
+        </div>
+    </div>
+
+    <!-- start: search & user box -->
+    <div class="header-right">
+
+        <span class="separator"></span>
+
+        <ul class="notifications">
+            @*<li>
+                    <a href="#" class="dropdown-toggle notification-icon" data-toggle="dropdown">
+                        <i class="fas fa-envelope"></i>
+                        <span class="badge">8</span>
+                    </a>
+
+                    <div class="dropdown-menu notification-menu">
+                        <div class="notification-title">
+                            <span class="float-right badge badge-default">1</span>
+                            Messages
+                        </div>
+
+                        <div class="content">
+                            <ul>
+                                <li>
+                                    <a href="#" class="clearfix">
+                                        <span class="title">GÖNDEREN ADSOYAD</span>
+                                        <span class="message">Mesajı</span>
+                                    </a>
+                                </li>
+                            </ul>
+
+                            <hr />
+
+                            <div class="text-right">
+                                <a href="#" class="view-more">Tüm Mesajlar</a>
+                            </div>
+                        </div>
+                    </div>
+                </li>*@
+
+        </ul>
+
+        <span class="separator"></span>
+
+        <div id="userbox" class="userbox">
+            <a href="#" data-toggle="dropdown">
+               
+                <div class="profile-info" data-lock-name="John Doe" data-lock-email="johndoe@okler.com">
+                    
+                        @{ if (Session["User"] != null)
+                            {
+                                KALEORG.Models.T_KULLANICI kullanici = (KALEORG.Models.T_KULLANICI)Session["User"];
+
+                        <span class="name">@kullanici.Kullanici_Adi</span>;
+                                
+                       
+                        <span class="role">@kullanici.Sifre</span>
+                            }
+                            else
+                            {
+                                <span>ÇIKIŞ YAPINIZ</span>
+                            }
+                        }
+                    </div>
+
+                <i class="fa custom-caret"></i>
+            </a>
+
+            <div class="dropdown-menu">
+                <ul class="list-unstyled mb-2">
+                    <li class="divider"></li>
+                    <li>
+                        <a role="menuitem" tabindex="-1" href="/Admin/Kullanici/KullaniciSifreForm"><i class="fas fa-key"></i> Şifre Değiştir</a>
+                    </li>
+                    <li>
+                        <a role="menuitem" tabindex="-1" href="/Admin/LoginAdmin/LogOut"><i class="fas fa-power-off"></i> ÇIKIŞ</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!-- end: search & user box -->
+</header>
+
+
+
+
+

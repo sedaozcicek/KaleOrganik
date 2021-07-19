@@ -1,0 +1,102 @@
+﻿<!-- Footer Start -->
+<footer class="andro_footer andro_footer-dark">
+    <!-- Instagram Start -->
+    <div class="row no-gutters">
+        <div class="col-lg-4 secondary-bg pattern-bg">
+            <div class="andro_instagram">
+                <h3 class="text-white">Bizi İnstagramdan Takip Edin</h3>
+                <a href="https://www.instagram.com/kale_organik/?igshid=1hzbqpu4lidmg" class="andro_btn-custom light">Takip Et</a>
+            </div>
+        </div>
+        <div class="col-lg-8">
+            <div class="row no-gutters">
+                <div class="col-lg-4 col-md-4 col-sm-4 col-6 p-0">
+                    <a href="#" class="andro_ig-item">
+                        <img src="/img/ig/1.jpg" alt="ig">
+                    </a>
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-4 col-6 p-0">
+                    <a href="#" class="andro_ig-item">
+                        <img src="/img/ig/2.jpg" alt="ig">
+                    </a>
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-4 col-6 p-0">
+                    <a href="#" class="andro_ig-item">
+                        <img src="/img/ig/3.jpg" alt="ig">
+                    </a>
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-4 col-6 p-0">
+                    <a href="#" class="andro_ig-item">
+                        <img src="/img/ig/4.jpg" alt="ig">
+                    </a>
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-4 col-6 p-0">
+                    <a href="#" class="andro_ig-item">
+                        <img src="/img/ig/5.jpg" alt="ig">
+                    </a>
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-4 col-6 p-0">
+                    <a href="#" class="andro_ig-item">
+                        <img src="/img/ig/6.jpg" alt="ig">
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Instagram End -->
+    <!-- Middle Footer -->
+    <br /><br /><br />
+    <div class="andro_footer-middle">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-3 col-lg-3 col-md-4 col-sm-12 footer-widget">
+                    <h5 class="widget-title">İÇERİK</h5>
+                    <ul>
+                        <li> <a href="/Home/Index">Anasayfa</a> </li>
+                        <li> <a href="/Hakkimizda/Index">Hakkımızda</a> </li>
+                        <li> <a href="about-us.html">İletişim</a> </li>
+                        <li> <a href="shop-v1.html">Üretim Yeri</a> </li>
+                        <li> <a href="contact-us.html">Sertifikalar</a> </li>
+                    </ul>
+                </div>
+                <div class="col-xl-3 col-lg-3 col-md-4 col-sm-12 footer-widget">
+                    <h5 class="widget-title">ÜRÜNLER</h5>
+                    @foreach (var i in ViewBag.kategoriList)
+                    {
+                        <ul><li><a href="/Urun/Index/@i.KATEGORI_ID">@i.KATEGORI_ADI</a></li></ul>
+                    }
+
+
+                </div>
+                <div class="col-xl-3 col-lg-3 col-md-4 col-sm-12 footer-widget">
+                    <h5 class="widget-title">ÜRETİCİLER</h5>
+                    <ul>
+                        <li> Metin YILMAZ</a> </li>
+                        <li> Nebahat YILMAZ</a> </li>
+                    </ul>
+                </div>
+                <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 footer-widget">
+                    <h5 class="widget-title">Sosyal Medya Hesapları</h5>
+                    <ul class="social-media">
+                        <li> <a class=""> <i class=""></i> </a> </li>
+                        <li> <a href="https://www.instagram.com/kale_organik/?igshid=1hzbqpu4lidmg" class="instagram"> <i class="fab fa-instagram"></i> </a> </li>
+                        <li> <a href="https://tr.linkedin.com/in/kale-organik-5581171a9" class="linkedin"> <i class="fab fa-linkedin-in"></i>  </a> </li>
+                        </ul>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer Bottom -->
+    <div class="andro_footer-bottom">
+        <div class="container">
+            <div class="andro_footer-copyright">
+                <p> Seda ÖZÇİÇEK © 2020  Tüm hakları saklıdır. </p>
+                <a href="#" class="andro_back-to-top">Sayfa başı <i class="fas fa-chevron-up"></i> </a>
+            </div>
+        </div>
+    </div>
+
+</footer>
+<!-- Footer End -->

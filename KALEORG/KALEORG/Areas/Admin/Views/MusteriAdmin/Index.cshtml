@@ -1,0 +1,118 @@
+﻿@model List<KALEORG.Models.T_MUSTERI>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<section role="main" class="content-body">
+
+    <header class="page-header">
+        <h2>Müşteri Listesi</h2>
+        <div class="right-wrapper text-right">
+            <ol class="breadcrumbs">
+                <li>
+                    <a href="/Admin/MusteriAdmin/Index">
+                        <i class="fas fa-home"></i>
+                    </a>
+                </li>
+                <li><span>Müşteri Listesi</span></li>
+
+            </ol>
+        </div>
+    </header>
+
+    <!-- start: page -->
+
+    <div class="row" style="padding:50px 0 0 0">
+        <div class="col">
+            <section class="card">
+                <header class="card-header">
+                    <div class="pull-right">
+                        <a href="/Admin/MusteriAdmin/MusteriForm" class="btn btn-success">EKLE</a>
+                        @if (ViewBag.Ekran == "Pasif")
+                        {
+                            <a href="/Admin/MusteriAdmin/Index" class="btn btn-primary">Aktif Kategori Listesi</a>
+                        }
+                        else
+                        {
+                            <a href="/Admin/MusteriAdmin/PassiveList" class="btn btn-primary">Pasif Kategori Listesi</a>
+                        }
+
+                    </div>
+                    <h2 class="card-title">Müşteri Listesi</h2>
+                </header>
+                <div class="card-body">
+                    <table class="table table-bordered table-striped mb-0" id="datatable-tabletools">
+                        <thead>
+                            <tr>
+                                <th>MUSTERI ADI</th>
+                                <th>MUSTERI SOYADI</th>
+                                <th>MUSTERI MAIL</th>
+                                <th>MUSTERI TELEFON</th>
+                                <th>İŞLEMLER</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @if (Model != null)
+                            {
+                                foreach (var i in Model)
+                                {
+
+                                    <tr>
+                                        <td>@i.MUSTERI_ADI</td>
+                                        <td>@i.MUSTERI_SOYADI</td>
+                                        <td>@i.MUSTERI_MAIL</td>
+                                        <td>@i.MUSTERI_TELEFON</td>
+
+                                        <td class="btn-group">
+                                            @if (ViewBag.Ekran != "Pasif")
+                                            {
+                                                <a href="/Admin/MusteriAdmin/Update/@i.MUSTERI_ID" class="btn btn-warning btn-sm"><i class="fa fa-pencil-alt"></i> Güncelle</a>
+                                            }
+                                            @if (ViewBag.Ekran == "Pasif")
+                                            {
+                                                <a href="/Admin/MusteriAdmin/Active/@i.MUSTERI_ID" class="btn btn-success btn-sm"><i class="fa fa-rocket fa-fw"></i>Aktifleştir</a>
+                                            }
+                                            else
+                                            {
+                                                <a href="/Admin/MusteriAdmin/Passive/@i.MUSTERI_ID" class="btn btn-danger btn-sm"><i class="fa fa-trash fa-fw"></i>Pasifleştir</a>
+                                            }
+                                            <a href="/Admin/AdresAdmin/Index/@i.MUSTERI_ID" class="btn btn-danger btn-sm"><i class="fa fa-trash fa-fw"></i>Adreslerini Listele</a>
+                                            <a href="/Admin/AdresAdmin/AdresForm/@i.MUSTERI_ID" class="btn btn-danger btn-sm"><i class="fa fa-trash fa-fw"></i>Adres Ekle</a>
+                                        </td>
+                                    </tr>
+
+                                }
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <!-- end: page -->
+
+</section>
+@section scripts
+{
+
+    <!-- Specific Page Vendor -->
+    <script src="/Content/vendor/select2/js/select2.js"></script>
+    <script src="/Content/vendor/datatables/media/js/jquery.dataTables.min.js"></script>
+    <script src="/Content/vendor/datatables/media/js/dataTables.bootstrap4.min.js"></script>
+    <script src="/Content/vendor/datatables/extras/TableTools/Buttons-1.4.2/js/dataTables.buttons.min.js"></script>
+    <script src="/Content/vendor/datatables/extras/TableTools/Buttons-1.4.2/js/buttons.bootstrap4.min.js"></script>
+    <script src="/Content/vendor/datatables/extras/TableTools/Buttons-1.4.2/js/buttons.html5.min.js"></script>
+    <script src="/Content/vendor/datatables/extras/TableTools/Buttons-1.4.2/js/buttons.print.min.js"></script>
+    <script src="/Content/vendor/datatables/extras/TableTools/JSZip-2.5.0/jszip.min.js"></script>
+    <script src="/Content/vendor/datatables/extras/TableTools/pdfmake-0.1.32/pdfmake.min.js"></script>
+    <script src="/Content/vendor/datatables/extras/TableTools/pdfmake-0.1.32/vfs_fonts.js"></script>
+
+
+    <!-- Examples -->
+    <script src="/Scripts/js/examples/examples.datatables.default.js"></script>
+    <script src="/Scripts/js/examples/examples.datatables.row.with.details.js"></script>
+    <script src="/Scripts/js/examples/examples.datatables.tabletools.js"></script>
+
+}

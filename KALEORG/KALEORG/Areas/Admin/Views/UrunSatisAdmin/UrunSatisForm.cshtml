@@ -1,0 +1,103 @@
+﻿@model KALEORG.Models.T_URUN_SATIS
+@{
+    ViewBag.Title = "UrunSatisForm";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+
+<section role="main" class="content-body card-margin">
+    <header class="page-header">
+        <h2>Ürün & Satış Ekle / Güncelle</h2>
+
+        <div class="right-wrapper text-right">
+            <ol class="breadcrumbs">
+                <li>
+                    <a href="/Home/Index">
+                        <i class="fas fa-home"></i>
+                    </a>
+                </li>
+                <li><span><a href="/Admin/UrunSatisAdmin/Index/">Ürün & Satış Listesi</a> </span></li>
+                <li><span>Ürün & Satış Ekle / Güncelle</span></li>
+            </ol>
+
+            <a class="sidebar-right-toggle" data-open="sidebar-right"><i class="fas fa-chevron-left"></i></a>
+        </div>
+    </header>
+
+    <!-- start: page -->
+    @using (Html.BeginForm("Save", "UrunSatisAdmin", FormMethod.Post))
+    {
+
+        <div class="row" style="padding:50px 0 0 0">
+            <div class="col-lg-12">
+                <section class="card">
+                    <header class="card-header">
+                        <div class="card-actions">
+                        </div>
+                        <h2 class="card-title">Ürün & Satış Form</h2>
+
+                        <p class="card-subtitle">
+                            Lütfen (*) içeren alanları boş bırakmayınız.!
+                        </p>
+                    </header>
+                    <div class="card-body">
+                        <div class="row form-group">
+                            <div class="col-lg-5">
+                                <div class="form-group">
+                                    <label class="col-form-label">URUN ADI (*)</label>
+                                    @Html.DropDownListFor(m => m.URUN_ID, new SelectList(ViewBag.Urun, "value", "text"), new { @class = "form-control", @required = "required" })
+                                    @Html.ValidationMessageFor(m => m.URUN_ID)
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-form-label">MÜŞTERİ ADI (*)</label>
+                                    @Html.DropDownListFor(m => m.MUSTERI_ID, new SelectList(ViewBag.Musteri, "value", "text"), new { @class = "form-control", @required = "required" })
+                                    @Html.ValidationMessageFor(m => m.MUSTERI_ID)
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-form-label">SATIŞ TARİHİ (*)</label>
+                                    @Html.TextBoxFor(m => m.SATIS_TARIHI, String.Format("{0:d}", Model.SATIS_TARIHI), new { @class = "form-control", @type="date", @required = "required" })
+                                    @Html.ValidationMessageFor(m => m.SATIS_TARIHI)
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-form-label">KARGO FİRMA ADI (*)</label>
+                                    @Html.DropDownListFor(m => m.KARGO_FIRMA_ID, new SelectList(ViewBag.Kargo, "value", "text"), new { @class = "form-control", @required = "required" })
+                                    @Html.ValidationMessageFor(m => m.KARGO_FIRMA_ID)
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-form-label">KARGO NO (*)</label>
+                                    @Html.TextBoxFor(m => m.KARGO_NO, new { @class = "form-control", @type = "text", @MaxLength = "50", @required = "required" })
+                                    @Html.ValidationMessageFor(m => m.KARGO_NO)
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-form-label">SATIS FIYAT (*)</label>
+                                    @Html.TextBoxFor(m => m.SATIS_FIYAT, new { @class = "form-control", @required = "required" })
+                                    @Html.ValidationMessageFor(m => m.SATIS_FIYAT)
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-form-label"> MIKTAR(*)</label>
+                                    @Html.TextBoxFor(m => m.MIKTAR, new { @class = "form-control", @type = "number", @required = "required" })
+                                    @Html.ValidationMessageFor(m => m.MIKTAR)
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <footer class="card-footer text-right">
+                        @Html.HiddenFor(m => m.URUN_ID)
+                        <button class="btn btn-success">KAYDET</button>
+                    </footer>
+                </section>
+            </div>
+        </div>
+
+    }
+</section>
+
+@section scripts
+{
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+    <script src="~/Scripts/MaxMinLength.js"></script>
+
+}
+
+

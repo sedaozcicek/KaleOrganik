@@ -1,0 +1,104 @@
+﻿@model KALEORG.Models.T_ILETISIM
+@{
+    ViewBag.Title = "IletisimForm";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+
+<section role="main" class="content-body card-margin">
+    <header class="page-header">
+        <h2>İLETİŞİM Ekle / Güncelle</h2>
+
+        <div class="right-wrapper text-right">
+            <ol class="breadcrumbs">
+                <li>
+                    <a href="/Home/Index">
+                        <i class="fas fa-home"></i>
+                    </a>
+                </li>
+                <li><span><a href="/Admin/IletisimAdmin/Index/">İletişim</a> </span></li>
+                <li><span>İletişim Ekle / Güncelle</span></li>
+            </ol>
+
+            <a class="sidebar-right-toggle" data-open="sidebar-right"><i class="fas fa-chevron-left"></i></a>
+        </div>
+    </header>
+
+    <!-- start: page -->
+    @using (Html.BeginForm("Save", "IletisimAdmin", FormMethod.Post))
+    {
+
+        <div class="row" style="padding:50px 0 0 0">
+            <div class="col-lg-12">
+                <section class="card">
+                    <header class="card-header">
+                        <div class="card-actions">
+                        </div>
+                        <h2 class="card-title">İLETİSİM Form</h2>
+
+                        <p class="card-subtitle">
+                            Lütfen (*) içeren alanları boş bırakmayınız.!
+                        </p>
+                    </header>
+                    <div class="card-body">
+                        <div class="row form-group">
+                            <div class="col-lg-5">
+                                <div class="form-group">
+                                    <label class="col-form-label">ADRES (*)</label>
+                                    @Html.TextBoxFor(m => m.ADRES , new { ViewBag.Iletisim , @class = "form-control", @type = "text", @MaxLength = "250", @required = "required" })
+                                    @Html.ValidationMessageFor(m => m.ADRES)
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-form-label">TELEFON1 (*)</label>
+                                    @Html.TextBoxFor(m => m.TELEFON1, new { @class = "form-control", @type = "text", @MaxLength = "15", @required = "required" })
+                                    @Html.ValidationMessageFor(m => m.TELEFON1)
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-form-label">TELEFON2 (*)</label>
+                                    @Html.TextBoxFor(m => m.TELEFON2, new { @class = "form-control", @type = "text", @MaxLength = "15", @required = "required" })
+                                    @Html.ValidationMessageFor(m => m.TELEFON2)
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-form-label">FAKS (*)</label>
+                                    @Html.TextBoxFor(m => m.FAKS, new { @class = "form-control", @type = "text", @MaxLength = "15", @required = "required" })
+                                    @Html.ValidationMessageFor(m => m.FAKS)
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-form-label">MAIL MUHASEBE (*)</label>
+                                    @Html.TextBoxFor(m => m.MAIL_MUHASEBE, new { @class = "form-control", @type = "text", @MaxLength = "75", @required = "required" })
+                                    @Html.ValidationMessageFor(m => m.MAIL_MUHASEBE)
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-form-label">MAIL SATIS (*)</label>
+                                    @Html.TextBoxFor(m => m.MAIL_SATIS, new { @class = "form-control", @type = "text", @MaxLength = "75", @required = "required" })
+                                    @Html.ValidationMessageFor(m => m.MAIL_SATIS)
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-form-label">MAIL INFO (*)</label>
+                                    @Html.TextBoxFor(m => m.MAIL_INFO, new { @class = "form-control", @type = "text", @MaxLength = "75", @required = "required" })
+                                    @Html.ValidationMessageFor(m => m.MAIL_INFO)
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <footer class="card-footer text-right">
+                        @Html.HiddenFor(m => m.ILETISIM_ID)
+                        <button class="btn btn-success">KAYDET</button>
+                    </footer>
+                </section>
+            </div>
+        </div>
+
+    }
+</section>
+
+@section scripts
+{
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+    <script src="~/Scripts/MaxMinLength.js"></script>
+
+}
+
+
+

@@ -1,0 +1,60 @@
+﻿  <!-- Aside (Right Panel) -->
+<aside class="andro_aside andro_aside-right">
+    <div class="sidebar">
+
+        <!-- Popular Categories Start -->
+        <div class="sidebar-widget widget-categories-icons">
+            <h5 class="widget-title">KATEGORİLER</h5>
+            <div class="row">
+                @foreach (var i in ViewBag.kategoriList)
+                {
+
+                    <div class="col-lg-6">
+                        <div class="andro_icon-block text-center has-link">
+                            <a href="/Urun/Index/@i.KATEGORI_ID">
+                                <i class="flaticon-diet"></i>
+                                <h5>@i.KATEGORI_ADI</h5>
+                            </a>
+                        </div>
+                    </div>
+                }
+
+                </div>
+        </div>
+        <!-- Popular Categories End -->
+       
+
+    </div>
+</aside>
+<div class="andro_aside-overlay aside-trigger-right"></div>
+
+<!-- Aside (Mobile Navigation) -->
+<aside class="andro_aside andro_aside-left">
+    <a class="navbar-brand" href="index.html"> <img src="/img/kalelogo.png" alt="logo"> </a>
+
+    <ul>
+
+        <li class="menu-item menu-item-has-children">
+            <a href="#">İÇERİK</a>
+            <ul class="sub-menu">
+                <li class="menu-item"> <a href="/Hakkimizda/Index">HAKKIMIZDA</a> </li>
+                <li class="menu-item"> <a href="/UretimYeri/Index">ÜRETİM YERİ</a> </li>
+                <li class="menu-item"> <a href="/Sertifika/Index">SERTİFİKALAR</a> </li>
+                <li class="menu-item"> <a href="/Sepet/Index">SEPETİM</a> </li>
+            </ul>
+        </li>
+        <li class="menu-item menu-item-has-children">
+            <a href="#">ÜRÜNLER</a>
+            <ul class="sub-menu">
+                @foreach (var i in ViewBag.kategoriList)
+                {
+                    <li><a href="/Urun/Index/@i.KATEGORI_ID">@i.KATEGORI_ADI</a></li>
+                }
+
+            </ul>
+        </li>
+        <li class="menu-item"> <a href="/Iletisim/Index">Bizimle İletişime Geçin</a> </li>
+    </ul>
+
+</aside>
+<div class="andro_aside-overlay aside-trigger-left"></div>
